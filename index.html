@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <title>김지후 | 머신러닝 엔지니어 포트폴리오</title>
@@ -12,42 +12,53 @@
             padding: 0;
             color: #333;
         }
-
         header {
             background-color: #005f73;
             color: white;
-            padding: 40px 0 20px;
             text-align: center;
+            padding: 40px 20px 20px;
         }
-
         header img {
             width: 130px;
             border-radius: 100px;
             border: 3px solid white;
             margin-bottom: 10px;
         }
-
         section {
-            max-width: 800px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
         }
-
         h2 {
             color: #0a9396;
             border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
         }
-
         ul {
             list-style: none;
             padding: 0;
         }
-
         li {
             margin-bottom: 10px;
         }
-
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        a {
+            color: #0a9396;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
         footer {
             text-align: center;
             padding: 20px;
@@ -55,118 +66,74 @@
             color: #888;
             margin-top: 40px;
         }
-
-        a {
-            color: #0a9396;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
-
 <body>
     <header>
-        <img src="images/KJH121212.png"
-            alt="대표 캐릭터 이미지"
-            id="character-img"
-            style="width: 130px;
-                    border-radius: 100px;
-                    border: 3px solid white;
-                    margin-bottom: 10px;
-                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                    transition: transform 0.3s;">
-            
-        <script>
-        const img = document.getElementById('character-img');
-        let isZoomed = false;
-
-        img.onclick = function() {
-            if (isZoomed) {
-            img.style.transform = 'scale(1)';
-            } else {
-            img.style.transform = 'scale(1.2)';
-            }
-            isZoomed = !isZoomed;
-        };
-        </script>
-
+        <img src="images/KJH121212.png" alt="대표 캐릭터 이미지">
+        <h1>안녕하세요 👋</h1>
+        <p>IT 서비스를 만드는 김지후입니다.</p>
     </header>
 
     <section>
-        <h2>👋 소개</h2>
-        <p>안녕하세요! 자연어처리에 관심이 많은 머신러닝 엔지니어 지망생입니다. 요약, 검색, 챗봇 시스템에 대한 경험이 있으며, 차근차근 신뢰를 주는 AI를 만드는 것을 목표로 하고 있습니다.</p>
+        <h2>📄 프로필</h2>
+        <ul>
+            <li><strong>학력:</strong> 경희대학교 국제캠퍼스 / 생체의공학과 (2018.03 ~ 2024.02)</li>
+            <li><strong>외국어:</strong> 토익 스피킹</li>
+            <li><strong>기타:</strong> Upstage AI Lab 부트캠프 수료</li>
+            <li><strong>군:</strong> Upstage AI Lab 부트캠프 수료</li>
+
+        </ul>
+    </section>
+
+    <section>
+        <h2>⚒️ 기술 스택</h2>
+        <table>
+            <tr><th>구분</th><th>기술 스택</th><th>설명 또는 숙련도</th></tr>
+            <tr><td>언어</td><td>Python, C++, MATLAB</td><td>분석 및 웹 개발 / 데이터 추출</td></tr>
+            <tr><td>데이터 처리</td><td>Pandas, NumPy, Scikit-learn</td><td>전처리, 정규화, 인코딩</td></tr>
+            <tr><td>시각화</td><td>Matplotlib, Seaborn, Plotly</td><td>시계열 분석, 상관관계 분석</td></tr>
+            <tr><td>모델링</td><td>PyTorch, LSTM, AutoEncoder</td><td>이상 탐지, 시계열 예측</td></tr>
+            <tr><td>실험 관리</td><td>Wandb</td><td>실험 기록, 하이퍼파라미터 튜닝</td></tr>
+            <tr><td>웹 배포</td><td>Streamlit</td><td>분석 결과 웹 대시보드 개발</td></tr>
+            <tr><td>협업 도구</td><td>Jira, Confluence, Notion, Slack</td><td>프로젝트 관리 및 커뮤니케이션</td></tr>
+            <tr><td>분석 도구</td><td>Google Analytics, Amplitude</td><td>사용자 분석, 퍼널, 리텐션 추적</td></tr>
+            <tr><td>버전 관리</td><td>Git, GitHub</td><td>Gitflow 형식을 이용한 형상 관리 및 코드 공유</td></tr>
+        </table>
     </section>
 
     <section>
         <h2>💼 프로젝트</h2>
+        <p><a href="https://www.notion.so/1f23d9932ae381e2bf69c86423a3e1bd?pvs=21" target="_blank">주요 프로젝트 포트폴리오 보기</a></p>
+    </section>
+
+    <section>
+        <h2>🙋🏻 일하는 방식</h2>
         <ul>
-            <li>
-                <strong onclick="toggleDetail('proj4')" style="cursor: pointer; color: #0a9396;">▶ 문서 이미지 분류 (CV) - 오합지존 IDLE</strong>
-                <div id="proj4" style="display: none; margin-top: 5px;">
-                    문서 이미지 분류 대회에서 다양한 모델 실험과 데이터 증강을 통해 성능을 향상시킨 프로젝트입니다.
-                    <ul>
-                        <li><strong>주요 모델:</strong> ResNet50, EfficientNet-B3, SwinTransformer-T</li>
-                        <li><strong>주요 기술:</strong> Albumentations, Augraphy, YOLOv12, Wandb sweep</li>
-                        <li><strong>데이터:</strong> 문서 이미지 1,540장 (Train) / 3,140장 (Test)</li>
-                        <li><strong>기여:</strong> sinogram을 활용한 실험 설계 및 분석</li>
-                    </ul>
-                    <p>
-                        <a href="https://github.com/KJH121212/cv4" target="_blank">🔗 GitHub 저장소</a> |
-                        <a href="https://docs.google.com/presentation/d/1R5TKQEXin4YcNhtRVe_5Dm_Z2HQ-abzcP2y960GBNAQ/edit?usp=sharing" target="_blank">📄 발표자료 보기</a>
-                    </p>
-                </div>
-            </li>
-            <li>
-                <strong onclick="toggleDetail('proj1')" style="cursor: pointer; color: #0a9396;">▶ RAG 기반 챗봇</strong>
-                <div id="proj1" style="display: none; margin-top: 5px;">
-                    Upstage Solar API를 활용한 검색형 챗봇 구축 프로젝트입니다.
-                    <br>
-                    <a href="https://github.com/jihukim/rag-chatbot" target="_blank">🔗 GitHub 링크 열기</a>
-                </div>
-            </li>
-            <li>
-                <strong onclick="toggleDetail('proj2')" style="cursor: pointer; color: #0a9396;">▶ 화학 공정 이상 탐지</strong>
-                <div id="proj2" style="display: none; margin-top: 5px;">
-                    시계열 데이터를 활용해 이상 징후를 탐지하는 프로젝트입니다.
-                    <br>
-                    <a href="https://github.com/jihukim/fault-detection" target="_blank">🔗 GitHub 링크 열기</a>
-                </div>
-            </li>
-            <li>
-                <strong onclick="toggleDetail('proj3')" style="cursor: pointer; color: #0a9396;">▶ 일상 대화 요약 모델</strong>
-                <div id="proj3" style="display: none; margin-top: 5px;">
-                    Sequence-to-Sequence 기반으로 대화를 요약하는 모델을 개발했습니다.
-                    <br>
-                    <a href="https://github.com/jihukim/conversation-summary" target="_blank">🔗 GitHub 링크 열기</a>
-                </div>
-            </li>
+            <li>목표 달성도 중요하지만 일의 과정에서 재미를 찾습니다.</li>
+            <li>문제가 생겨도 그 상황 안에서 방향을 찾아 실행합니다.</li>
+            <li>기한은 반드시 지키려고 노력합니다.</li>
         </ul>
     </section>
 
-    <script>
-        function toggleDetail(id) {
-            const elem = document.getElementById(id);
-            if (elem.style.display === "none") {
-                elem.style.display = "block";
-            } else {
-                elem.style.display = "none";
-            }
-        }
-    </script>
-
-
     <section>
-        <h2>📫 연락처</h2>
+        <h2>👋 Contact</h2>
         <p>Email: <a href="mailto:jihu6033@gmail.com">jihu6033@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/KJH121212" target="_blank">https://github.com/KJH121212</a></p>
+        <p>Phone: +82 010-3389-8271</p>
+        <p>Location: 경기도 안양시</p>
+        <iframe
+        src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.9881811943465!2d126.95394327153497!3d37.36645653498779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5df670cb54f7%3A0xea7bf0767aad95bf!2z7Zi46rOE7JWE7YGs66Gc66as67KE!5e0!3m2!1sko!2skr!4v1748165304014!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
+        width="100%"
+        height="300"
+        style="border:0; border-radius: 12px;"
+        allowfullscreen=""
+        loading="lazy">
+        </iframe>
+        <p><a href="#">👆 맨 위로</a></p>
     </section>
 
     <footer>
         ⓒ 2025 김지후. All rights reserved.
     </footer>
 </body>
-
 </html>
