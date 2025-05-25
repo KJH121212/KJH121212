@@ -69,9 +69,30 @@
 
 <body>
     <header>
-        <img src="https://naver.me/5Plt1FVX" alt="지후 김 증명사진">
-        <h1>지후 김</h1>
-        <p>머신러닝 엔지니어 포트폴리오</p>
+        <img src="images/KJH121212.png"
+            alt="대표 캐릭터 이미지"
+            id="character-img"
+            style="width: 130px;
+                    border-radius: 100px;
+                    border: 3px solid white;
+                    margin-bottom: 10px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    transition: transform 0.3s;">
+            
+        <script>
+        const img = document.getElementById('character-img');
+        let isZoomed = false;
+
+        img.onclick = function() {
+            if (isZoomed) {
+            img.style.transform = 'scale(1)';
+            } else {
+            img.style.transform = 'scale(1.2)';
+            }
+            isZoomed = !isZoomed;
+        };
+        </script>
+
     </header>
 
     <section>
@@ -123,12 +144,12 @@
 
     <section>
         <h2>📫 연락처</h2>
-        <p>Email: <a href="mailto:jihukim@example.com">jihukim@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/jihukim" target="_blank">github.com/jihukim</a></p>
+        <p>Email: <a href="mailto:jihu6033@gmail.com">jihukim@example.com</a></p>
+        <p>GitHub: <a href="https://github.com/KJH121212" target="_blank">github.com/jihukim</a></p>
     </section>
 
     <footer>
-        ⓒ 2025 지후 김. All rights reserved.
+        ⓒ 2025 김지후. All rights reserved.
     </footer>
 </body>
 
