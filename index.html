@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>김지후 | 머신러닝 엔지니어 포트폴리오</title>
     <style>
+        /* 🔷 전체 기본 스타일 */
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #f7f9fc;
@@ -11,53 +12,71 @@
             padding: 0;
             color: #333;
         }
+
+        /* 🔷 헤더 스타일 */
         header {
             background-color: #005f73;
             color: white;
             text-align: center;
             padding: 40px 20px 20px;
         }
+
         header img {
             width: 130px;
             border-radius: 100px;
             border: 3px solid white;
             margin-bottom: 10px;
         }
+
+        /* 🔷 섹션 레이아웃 */
         section {
             max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
         }
+
         h2 {
             color: #0a9396;
             border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
         }
+
+        /* 🔷 리스트 기본 스타일 */
         ul {
             list-style: none;
             padding: 0;
         }
+
         li {
             margin-bottom: 10px;
         }
+
+        /* 🔷 표 스타일 */
         table {
             width: 100%;
             border-collapse: collapse;
         }
+
         table, th, td {
             border: 1px solid #ccc;
         }
+
         th, td {
             padding: 10px;
             text-align: left;
         }
+
+        /* 🔷 링크 스타일 */
         a {
             color: #0a9396;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
+        /* 🔶 프로젝트 요약 summary */
         details summary {
             list-style: none;
             display: flex;
@@ -78,14 +97,101 @@
         details[open] summary::before {
             transform: rotate(90deg);
         }
+
+        summary .project-period {
+            margin-left: auto;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* 🔶 프로젝트 상세 영역 */
         ul.project-detail {
             padding-left: 20px;
             margin-top: 5px;
             margin-bottom: 20px;
         }
+
         ul.project-detail li {
             margin-bottom: 6px;
         }
+
+        ul.project-sublist {
+            padding-left: 20px;
+            list-style-type: disc;
+            margin-top: 4px;
+            margin-bottom: 10px;
+        }
+
+        ul.project-sublist li {
+            margin-bottom: 4px;
+        }
+
+        /* 🔶 프로젝트 전체 카드 스타일 추가 */
+        details {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            padding: 18px 24px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.2s ease;
+        }
+
+        details:hover {
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 🔷 Education 섹션 */
+        .education-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid #ddd;
+            padding: 8px 0;
+        }
+
+        .education-degree {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .education-period {
+            font-size: 0.9em;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        /* 🔷 Certification 섹션 */
+        .certification-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .certification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid #ddd;
+            padding: 8px 0;
+        }
+
+        .certification-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .certification-date {
+            font-size: 0.9em;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        /* 🔷 Footer */
         footer {
             text-align: center;
             padding: 20px;
@@ -93,33 +199,40 @@
             color: #888;
             margin-top: 40px;
         }
+
+        /* 🔷 기타 유틸 클래스 */
         .project-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
         }
-        summary .project-period {
-            margin-left: auto;
-            font-size: 0.9em;
-            color: #666;
-        }
     </style>
+
 </head>
 
 <body>
     <header>
-        <img src="images/profile.jpg" alt="프로필 이미지">
+        <img src="images/profile.png" alt="프로필 이미지">
         <h1>지속 가능하고 따뜻한 AI를 만드는 엔지니어</h1>
         <p>문제를 깊게 고민하고, 데이터로 답을 찾는 김지후입니다.</p>
     </header>
 
     <section>
         <h2>🎓 Education</h2>
-        <ul>
-            <li>경희대학교 국제캠퍼스 생체의공학부 학사 (2018.03 ~ 2024.02) GPA 3.391 / 4.3</li>
-            <li>Upstage AI Lab 부트캠프 수료 (2024.11 ~ 2025.04)</li>
-            <li>국비지원 사설교육 과정 수료 (2024.11 ~ 2025.04)</li>
+        <ul class="education-list">
+            <li class="education-item">
+                <span class="education-degree">
+                    경희대학교 국제캠퍼스 생체의공학부 학사<br>
+                    <span style="font-size: 0.9em; color: #777;">GPA 3.4 / 4.3</span>
+                </span>
+                <span class="education-period">2018.03 ~ 2024.02</span>
+            </li>
+
+            <li class="education-item">
+                <span class="education-degree">Upstage AI Lab 부트캠프 수료</span>
+                <span class="education-period">2024.11 ~ 2025.04</span>
+            </li>
         </ul>
     </section>
 
@@ -136,10 +249,14 @@
                         <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
                         <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
-                        <li><strong>💡 주요 시도:</strong> 사회적 거리두기·평균 기온 변수 추가, 일본·러시아 데이터를 결합한 학습 데이터 구성</li>
+                        <li><strong>💡 주요 시도:</strong>
+                            <ul class="project-sublist">
+                                <li>✔ <strong>외부 변수 추가:</strong> 사회적 거리두기 단계 및 평균 기온 변수 도입</li>
+                                <li>✔ <strong>데이터 다변화:</strong> 일본·러시아 확진자 데이터 병합 실험</li>
+                            </ul>
+                        </li>
                         <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
                         <li><strong>🔗 상세링크:</strong> 
-                            <a href="https://github.com/KJH121212/lstm-covid19-predict" target="_blank">GitHub</a>
                         </li>
                     </ul>
                 </details>
@@ -154,21 +271,19 @@
                         <li><strong>📌 개요:</strong> 서울시 아파트 실거래 데이터를 기반으로 다양한 모델을 실험하여 아파트 매매가를 예측하는 팀 프로젝트입니다. 부동산 시장의 특성을 반영한 피처 엔지니어링과 회귀 모델링 기법을 통해 예측 성능을 향상시키고자 했습니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> 회귀 모델 구현, 피처 엔지니어링 기획 및 적용, 하이퍼파라미터 튜닝</li>
                         <li><strong>🛠️ 기술 스택:</strong> Python, XGBoost, Scikit-learn, Pandas, Seaborn, Matplotlib</li>
-                        <li><strong>💡 주요 시도:</strong> 
-                            <ul>
-                                <li>건축연도 기준 신축/구축 여부 파생변수 생성</li>
-                                <li>강남/강북 여부 파생변수 설계</li>
-                                <li>범주형 변수 'NULL' 치환, 연속형 변수 선형 보간</li>
-                                <li>지하철/버스 거리 기반 파생 변수 생성</li>
-                                <li>왜도 조정을 위한 로그 변환, 계약년·계약월 분리</li>
+                        <li><strong>💡 주요 시도:</strong>
+                            <ul class="project-sublist">
+                                <li>✔ <strong>파생 변수 설계:</strong> 건축연도 기반 신축 여부, 강남/강북 여부 생성</li>
+                                <li>✔ <strong>결측치 처리:</strong> 범주형은 'NULL'로 치환, 연속형은 선형 보간</li>
+                                <li>✔ <strong>거리 기반 피처:</strong> 지하철/버스 정류장 거리 활용</li>
+                                <li>✔ <strong>정규화:</strong> 로그 변환 및 계약년·계약월 분리</li>
                             </ul>
                         </li>
                         <li><strong>🏆 성과:</strong> 최종 모델 RMSE 11628.77 기록, 대회 최종 순위 2위 달성<br>
                             <img src="images/House_Price_Prediction.png" alt="House_Price_Result_Image" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
                         </li>
                         <li><strong>🔗 상세링크:</strong> 
-                            <a href="https://github.com/KJH121212/House_Price_Prediction" target="_blank">GitHub 저장소</a> | 
-                            <a href="outcome/report.pdf" target="_blank">발표자료</a>
+                            <a href="https://github.com/KJH121212/House_Price_Prediction" target="_blank">GitHub 저장소</a>
                         </li>
                     </ul>
                 </details>
@@ -184,20 +299,18 @@
                         <li><strong>🧑‍💻 역할:</strong> Sinogram 기반 실험 설계 및 테스트, 회전·노이즈 이미지 대응 전략 수립</li>
                         <li><strong>🛠️ 기술 스택:</strong> Python, PyTorch, Albumentations, Augraphy, YOLOv12, ResNet50, EfficientNet-B3, SwinTransformer</li>
                         <li><strong>💡 주요 시도:</strong>
-                            <ul>
-                                <li>Sinogram 변환을 통한 특이 구조 보완</li>
-                                <li>회전·노이즈·마스킹 등 다양한 증강기법 적용 (Mixup, Cutmix 포함)</li>
-                                <li>ResNet50, EfficientNet-B3, SwinTransformer 기반 앙상블 구조 설계</li>
-                                <li>YOLOv12로 타이틀 객체 탐지 → 분류 연동 전략 실험</li>
-                                <li>데이터셋 확장 (Train: 14,130 → 114,601)</li>
+                            <ul class="project-sublist">
+                                <li>✔ <strong>이미지 증강:</strong> Mixup, Cutmix, 마스킹, 노이즈, 회전 등 적용</li>
+                                <li>✔ <strong>Sinogram 실험:</strong> 비정형 문서 패턴 대응을 위한 구조 설계</li>
+                                <li>✔ <strong>YOLO 기반 객체 탐지:</strong> 타이틀 탐지 후 분류 연동 전략 실험</li>
+                                <li>✔ <strong>다단계 앙상블:</strong> ResNet + EfficientNet + SwinTransformer 조합</li>
                             </ul>
                         </li>
                         <li><strong>🏆 성과:</strong> 다단계 앙상블 및 객체 탐지 기반 재분류 전략으로 최종 리더보드 1위 달성
                             <img src="images/Document_Type_Classification.png" alt="Document_Type_Classification_Result_Image" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
                         </li>
                         <li><strong>🔗 상세링크:</strong> 
-                            <a href="https://github.com/UpstageAILab6/upstage-cv-classification-cv-4" target="_blank">GitHub 저장소</a> | 
-                            <a href="outcome/4_프로젝트_발표자료.pdf" target="_blank">발표자료</a>
+                            <a href="https://github.com/UpstageAILab6/upstage-cv-classification-cv-4" target="_blank">GitHub 저장소</a>
                         </li>
                     </ul>
                 </details>
@@ -213,12 +326,12 @@
                         <li><strong>🧑‍💻 역할:</strong> 한국어 요약 모델 실험, Prompt 기반 Few-shot 전략 설계, Embedding 유사도 활용한 데이터 증강 수행</li>
                         <li><strong>🛠️ 기술 스택:</strong> Python, PyTorch Lightning, Huggingface Transformers, Unsloth, Wandb, Rouge</li>
                         <li><strong>💡 주요 시도:</strong>
-                            <ul>
-                                <li>한국어 특화 사전학습 모델 실험 (KoBART, SOLAR Pro 등)</li>
-                                <li>대화 구조에 따른 발화자 분리 및 길이 기반 필터링</li>
-                                <li>Prompt 기반 Few-shot 학습 구성 (Gemma, OpenAI 기반)</li>
-                                <li>DPO(Direct Preference Optimization)를 통한 요약 스타일 개선</li>
-                                <li>Cosine Similarity 기반 Embedding 활용 데이터 증강</li>
+                            <ul class="project-sublist">
+                                <li>✔ <strong>한국어 특화 모델 실험:</strong> KoBART, SOLAR Pro 등 다양한 사전학습 모델 적용</li>
+                                <li>✔ <strong>발화자 분리 및 필터링:</strong> 대화 구조에 따른 발화자 구분과 길이 기반 전처리</li>
+                                <li>✔ <strong>Few-shot 학습 구성:</strong> Gemma, OpenAI 기반 Prompt 설계 및 테스트</li>
+                                <li>✔ <strong>DPO 활용:</strong> Direct Preference Optimization으로 요약 스타일 향상</li>
+                                <li>✔ <strong>데이터 증강:</strong> Cosine Similarity 기반 Embedding으로 Few-shot 보강</li>
                             </ul>
                         </li>
                         <li><strong>🏆 성과:</strong> 다양한 사전학습 모델 비교 및 커스터마이징을 통해 현실적인 요약 스타일 확보, 요약 비율 및 정밀도 기준으로 안정적인 성능 달성
@@ -233,6 +346,30 @@
             <li>
                 <details>
                     <summary>
+                        정부지원금 추천 챗봇 - LangChain 3조
+                        <span class="project-period">2024.04.02 ~ 2024.04.08</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> 사용자 질문을 기반으로 적절한 정부지원 서비스를 추천하는 RAG 기반 챗봇 시스템을 설계 및 구현한 개인 프로젝트입니다. Solar API와 LangChain을 이용해 검색 및 생성 기능을 통합했습니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 전체 파이프라인 설계 및 구현 (문서 로딩, 인덱싱, 검색, 프롬프트 생성, 응답 출력 등)</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, LangChain, FAISS, Solar API, Streamlit, JSON</li>
+                        <li><strong>💡 주요 시도:</strong></li>
+                            <ul class="project-sublist">
+                                <li>✔ <strong>문서 구조 분석:</strong> JSON 조건 기반 필터링 및 색인 구조 설계</li>
+                                <li>✔ <strong>RAG 검색 파이프라인 구현:</strong> 사용자 질문 기반 문서 검색 및 프롬프트 자동 생성</li>
+                                <li>✔ <strong>응답 생성:</strong> Solar API를 통한 자연스러운 한글 답변 출력</li>
+                                <li>✔ <strong>인터페이스 구현:</strong> Streamlit 기반 검색 인터페이스 제작</li>
+                            </ul>
+                        <li><strong>🏆 성과:</strong> 조건 기반 문서 추천 정확도 향상, 사용자 질의에 대한 맞춤형 응답 생성 성공</li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/KJH121212/Smart_Subsidy_Finder" target="_blank">GitHub 저장소</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
                         과학 지식 질의 응답 시스템 구축 - UP6 팀 프로젝트
                         <span class="project-period">2025.04.16 ~ 2025.04.21</span>
                     </summary>
@@ -240,38 +377,18 @@
                         <li><strong>📌 개요:</strong> 과학 상식 문서 4,200여 개를 색인하고, 질문 의도 분류 → 문서 검색 → 응답 생성 흐름으로 구성된 RAG(Retrieval Augmented Generation) 시스템을 설계 및 구현한 프로젝트입니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> 질의 분류 로직 구현, 유사 문서 검색 파이프라인 개발, 응답 생성 흐름 구성</li>
                         <li><strong>🛠️ 기술 스택:</strong> Python, FAISS, LangChain, Upstage Solar API, Streamlit</li>
-                        <li><strong>💡 주요 시도:</strong> 
-                            <ul>
-                                <li>질문 도메인 여부 판단 후 RAG 흐름 제어</li>
-                                <li>FAISS 기반 유사 문서 검색 + Solar 기반 응답 생성</li>
-                                <li>출처 포함 응답 생성 → 사용자 신뢰도 향상</li>
-                                <li>토이셋 기반 빠른 반복 실험 후 전체 확장</li>
+                        <li><strong>💡 주요 시도:</strong></li>
+                            <ul class="project-sublist">
+                                <li>✔ <strong>도메인 분류:</strong> 질문 유형 분류를 통한 흐름 분기 및 최적 처리 전략 도입</li>
+                                <li>✔ <strong>문서 검색:</strong> FAISS를 활용한 유사 문서 검색</li>
+                                <li>✔ <strong>답변 생성:</strong> Solar API 기반 문서 기반 답변 생성 및 출처 포함</li>
+                                <li>✔ <strong>빠른 반복 실험:</strong> 토이셋을 활용해 빠르게 설계 반복</li>
                             </ul>
-                        </li>
                         <li><strong>🏆 성과:</strong> 최종 MAP 및 MRR 0.8939로 <strong>대회 1위</strong> 달성<br>
                             <img src="images/Scientific_Knowledge_Question_Answering.png" alt="과학 질의응답 리더보드 결과" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
                         </li>
                         <li><strong>🔗 상세링크:</strong> 
-                            <a href="https://github.com/KJH121212/project-rag-scienceqa" target="_blank">GitHub 저장소</a>
-                        </li>
-                    </ul>
-                </details>
-            </li>
-
-            <li>
-                <details>
-                    <summary>
-                        정부지원금 추천 챗봇
-                        <span class="project-period">2024.12.23 ~ 2024.01.07</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
-                        <li><strong>💡 주요 시도:</strong> 사회적 거리두기·평균 기온 변수 추가, 일본·러시아 데이터를 결합한 학습 데이터 구성</li>
-                        <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
-                        <li><strong>🔗 상세링크:</strong> 
-                            <a href="https://github.com/KJH121212/lstm-covid19-predict" target="_blank">GitHub</a>
+                            <a href="https://github.com/KJH121212/Scientific_Question_Answering" target="_blank">GitHub 저장소</a>
                         </li>
                     </ul>
                 </details>
@@ -280,16 +397,22 @@
                 <details>
                     <summary>
                         화학 공정 이상 탐지 프로젝트
-                        <span class="project-period">2024.12.23 ~ 2024.01.07</span>
+                        <span class="project-period">2025.04.23 ~ 2025.05.06</span>
                     </summary>
                     <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
-                        <li><strong>💡 주요 시도:</strong> 사회적 거리두기·평균 기온 변수 추가, 일본·러시아 데이터를 결합한 학습 데이터 구성</li>
-                        <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
-                        <li><strong>🔗 상세링크:</strong> 
-                            <a href="https://github.com/KJH121212/lstm-covid19-predict" target="_blank">GitHub</a>
+                        <li><strong>📌 개요:</strong> 공정 데이터를 활용해 이상 징후를 탐지하는 머신러닝 기반 프로젝트입니다. 화학 공정 시뮬레이션 데이터를 활용해 정상/비정상을 구분하는 다양한 이상 탐지 모델을 적용하고 비교 평가하였습니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> EDA, 이상 탐지 모델 설계 및 성능 비교, wandb 기반 실험 관리 및 후처리 로직 구현</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, Scikit-learn, PyTorch, wandb, Pandas, Matplotlib</li>
+                        <li><strong>💡 주요 시도:</strong></li>
+                            <ul class="project-sublist">
+                                <li>✔ <strong>EDA 분석:</strong> t-SNE 기반 시각화 및 센서 상관관계 분석</li>
+                                <li>✔ <strong>전처리 전략:</strong> 상관계수 기반 필터링 및 feature redundancy 제거</li>
+                                <li>✔ <strong>모델 비교 실험:</strong> Isolation Forest, One-Class SVM, AutoEncoder, Deep SVDD</li>
+                                <li>✔ <strong>후처리 로직:</strong> simulationRun 단위 이상 판별 전략으로 성능 개선</li>
+                            </ul>
+                        <li><strong>🏆 성과:</strong> 다양한 모델의 성능 비교 및 후처리를 통해 최적화된 이상 탐지 파이프라인 설계 완료</li>
+                        <li><strong>🔗 상세링크:</strong>
+                            <a href="https://github.com/KJH121212/ADChemical_Process_Anomaly_Detection" target="_blank">GitHub 저장소</a>
                         </li>
                     </ul>
                 </details>
@@ -298,16 +421,22 @@
                 <details>
                     <summary>
                         플루언트 기업 연계 프로젝트
-                        <span class="project-period">2024.12.23 ~ 2024.01.07</span>
+                        <span class="project-period">2025.05.08 ~ 2025.06.05</span>
                     </summary>
                     <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
-                        <li><strong>💡 주요 시도:</strong> 사회적 거리두기·평균 기온 변수 추가, 일본·러시아 데이터를 결합한 학습 데이터 구성</li>
-                        <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
+                        <li><strong>📌 개요:</strong> AI 버튜버 서비스를 위한 음성 합성/시나리오 생성 자동화 시스템을 기획하고, 미드저니와 텍스트-투-스피치 API 기반의 프로토타입을 제작한 프로젝트입니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 음성 캐릭터 설정, 시나리오 자동 생성 파이프라인 기획 및 음성 API 적용</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, TTS API(OpenAI), Midjourney, Prompt Engineering</li>
+                        <li><strong>💡 주요 시도:</strong></li>
+                            <ul class="project-sublist">
+                                <li>✔ <strong>AI 음성 캐릭터 디자인:</strong> 인물별 감정 및 말투 설정을 통한 프롬프트 구성</li>
+                                <li>✔ <strong>시나리오 자동 생성:</strong> 다양한 상황별 대화 시나리오를 조건 기반 생성</li>
+                                <li>✔ <strong>음성 합성:</strong> TTS API를 이용한 감정 기반 음성 생성</li>
+                                <li>✔ <strong>프로토타입 제작:</strong> 캐릭터 아바타 및 음성 출력 데모 구현</li>
+                            </ul>
+                        <li><strong>🏆 성과:</strong> 버튜버 서비스 기획부터 프로토타입 완성까지 전체 파이프라인 주도 및 제작 완료</li>
                         <li><strong>🔗 상세링크:</strong> 
-                            <a href="https://github.com/KJH121212/lstm-covid19-predict" target="_blank">GitHub</a>
+                            <a href="https://github.com/KJH121212/AI_Vtuber_Demo" target="_blank">GitHub 저장소</a>
                         </li>
                     </ul>
                 </details>
@@ -331,11 +460,18 @@
 
     <section>
         <h2>📜 Certifications</h2>
-        <ul>
-            <li>운전면허증 1종보통 (2018.02 취득)</li>
-            <li>iBT TOEIC Speaking Level 5 (2025.04)</li>
+        <ul class="certification-list">
+            <li class="certification-item">
+                <span class="certification-name">운전면허증 1종보통</span>
+                <span class="certification-date">2018.02 취득</span>
+            </li>
+            <li class="certification-item">
+                <span class="certification-name">iBT TOEIC Speaking IM3</span>
+                <span class="certification-date">2025.04 취득</span>
+            </li>
         </ul>
     </section>
+
 
     <section>
         <h2>📍 Contact & Location</h2>
