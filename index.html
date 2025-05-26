@@ -58,6 +58,34 @@
         a:hover {
             text-decoration: underline;
         }
+        details summary {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #0a9396;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        details summary::before {
+            content: '▶';
+            margin-right: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+        ul.project-detail {
+            padding-left: 20px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+        ul.project-detail li {
+            margin-bottom: 6px;
+        }
         footer {
             text-align: center;
             padding: 20px;
@@ -65,11 +93,23 @@
             color: #888;
             margin-top: 40px;
         }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        summary .project-period {
+            margin-left: auto;
+            font-size: 0.9em;
+            color: #666;
+        }
     </style>
 </head>
+
 <body>
     <header>
-        <img src="images/KJH121212.png" alt="프로필 이미지">
+        <img src="images/profile.jpg" alt="프로필 이미지">
         <h1>지속 가능하고 따뜻한 AI를 만드는 엔지니어</h1>
         <p>문제를 깊게 고민하고, 데이터로 답을 찾는 김지후입니다.</p>
     </header>
@@ -78,18 +118,200 @@
         <h2>🎓 Education</h2>
         <ul>
             <li>경희대학교 국제캠퍼스 생체의공학부 학사 (2018.03 ~ 2024.02) GPA 3.391 / 4.3</li>
-            <li>Upstage AI Lab 부트캠프 수료 (2024.11 ~ 2025.06)</li>
+            <li>Upstage AI Lab 부트캠프 수료 (2024.11 ~ 2025.04)</li>
+            <li>국비지원 사설교육 과정 수료 (2024.11 ~ 2025.04)</li>
         </ul>
     </section>
 
     <section>
         <h2>💼 Projects</h2>
         <ul>
-            <li><strong>졸업작품 - 코로나 확진자 예측</strong><br>LSTM을 활용한 확진자 수 예측 시스템 구현</li>
-            <li><strong>문서 이미지 분류 - 오합지존 IDLE</strong><br>문서 분류 대회에서 sinogram 기반 실험 및 모델 앙상블 구성 (ResNet, EfficientNet, YOLOv12 등)</li>
-            <li><strong>정부지원금 추천 챗봇 (RAG 기반)</strong><br>RAG(Retrieval-Augmented Generation) 구조를 기반으로 사용자의 상황에 맞는 정부지원금을 추천하는 챗봇 시스템 구현</li>
-            <li><strong>화학 공정 이상 탐지 프로젝트</strong><br>시계열 기반의 이상 탐지 모델 설계 및 EDA 분석</li>
-            <li><strong>일상 대화 요약 시스템</strong><br>Sequence-to-Sequence 구조 기반 대화요약 모델 개발 및 평가</li>
+            <li>
+                <details>
+                    <summary>
+                        졸업작품 - 코로나 확진자 예측
+                        <span class="project-period">2023.09.01 ~ 2023.12.01</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
+                        <li><strong>💡 주요 시도:</strong> 사회적 거리두기·평균 기온 변수 추가, 일본·러시아 데이터를 결합한 학습 데이터 구성</li>
+                        <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/KJH121212/lstm-covid19-predict" target="_blank">GitHub</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        아파트 실거래가 예측 - ML 5조 프로젝트
+                        <span class="project-period">2024.12.23 ~ 2025.01.07</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> 서울시 아파트 실거래 데이터를 기반으로 다양한 모델을 실험하여 아파트 매매가를 예측하는 팀 프로젝트입니다. 부동산 시장의 특성을 반영한 피처 엔지니어링과 회귀 모델링 기법을 통해 예측 성능을 향상시키고자 했습니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 회귀 모델 구현, 피처 엔지니어링 기획 및 적용, 하이퍼파라미터 튜닝</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, XGBoost, Scikit-learn, Pandas, Seaborn, Matplotlib</li>
+                        <li><strong>💡 주요 시도:</strong> 
+                            <ul>
+                                <li>건축연도 기준 신축/구축 여부 파생변수 생성</li>
+                                <li>강남/강북 여부 파생변수 설계</li>
+                                <li>범주형 변수 'NULL' 치환, 연속형 변수 선형 보간</li>
+                                <li>지하철/버스 거리 기반 파생 변수 생성</li>
+                                <li>왜도 조정을 위한 로그 변환, 계약년·계약월 분리</li>
+                            </ul>
+                        </li>
+                        <li><strong>🏆 성과:</strong> 최종 모델 RMSE 11628.77 기록, 대회 최종 순위 2위 달성<br>
+                            <img src="images/House_Price_Prediction.png" alt="House_Price_Result_Image" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
+                        </li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/KJH121212/House_Price_Prediction" target="_blank">GitHub 저장소</a> | 
+                            <a href="outcome/report.pdf" target="_blank">발표자료</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        문서 이미지 분류 - 오합지존 IDLE 팀 프로젝트
+                        <span class="project-period">2025.02.14 ~ 2025.02.25</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> 금융, 의료, 보험 등 산업 전반의 문서를 이미지 기반으로 분류하는 문서 타입 분류 대회에 참가하여, 다양한 이미지 증강과 앙상블 모델을 활용해 고성능 모델을 개발한 프로젝트입니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> Sinogram 기반 실험 설계 및 테스트, 회전·노이즈 이미지 대응 전략 수립</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, PyTorch, Albumentations, Augraphy, YOLOv12, ResNet50, EfficientNet-B3, SwinTransformer</li>
+                        <li><strong>💡 주요 시도:</strong>
+                            <ul>
+                                <li>Sinogram 변환을 통한 특이 구조 보완</li>
+                                <li>회전·노이즈·마스킹 등 다양한 증강기법 적용 (Mixup, Cutmix 포함)</li>
+                                <li>ResNet50, EfficientNet-B3, SwinTransformer 기반 앙상블 구조 설계</li>
+                                <li>YOLOv12로 타이틀 객체 탐지 → 분류 연동 전략 실험</li>
+                                <li>데이터셋 확장 (Train: 14,130 → 114,601)</li>
+                            </ul>
+                        </li>
+                        <li><strong>🏆 성과:</strong> 다단계 앙상블 및 객체 탐지 기반 재분류 전략으로 최종 리더보드 1위 달성
+                            <img src="images/Document_Type_Classification.png" alt="Document_Type_Classification_Result_Image" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
+                        </li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/UpstageAILab6/upstage-cv-classification-cv-4" target="_blank">GitHub 저장소</a> | 
+                            <a href="outcome/4_프로젝트_발표자료.pdf" target="_blank">발표자료</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        일상 대화 요약 시스템 - Upstage NLP 대회
+                        <span class="project-period">2025.03.12 ~ 2025.03.24</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> 다양한 일상 대화(회의, 상담, 여가 등)를 요약하는 NLP 경진대회에 참가하여, 비정형 텍스트 데이터를 기반으로 핵심 내용을 추출하는 요약 모델을 설계하고 실험한 프로젝트입니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 한국어 요약 모델 실험, Prompt 기반 Few-shot 전략 설계, Embedding 유사도 활용한 데이터 증강 수행</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, PyTorch Lightning, Huggingface Transformers, Unsloth, Wandb, Rouge</li>
+                        <li><strong>💡 주요 시도:</strong>
+                            <ul>
+                                <li>한국어 특화 사전학습 모델 실험 (KoBART, SOLAR Pro 등)</li>
+                                <li>대화 구조에 따른 발화자 분리 및 길이 기반 필터링</li>
+                                <li>Prompt 기반 Few-shot 학습 구성 (Gemma, OpenAI 기반)</li>
+                                <li>DPO(Direct Preference Optimization)를 통한 요약 스타일 개선</li>
+                                <li>Cosine Similarity 기반 Embedding 활용 데이터 증강</li>
+                            </ul>
+                        </li>
+                        <li><strong>🏆 성과:</strong> 다양한 사전학습 모델 비교 및 커스터마이징을 통해 현실적인 요약 스타일 확보, 요약 비율 및 정밀도 기준으로 안정적인 성능 달성
+                            <img src="images/Dialogue_Summarization.png" alt="Dialogue_Summarization_Image" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
+                        </li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/UpstageAILab6/upstageailab-nlp-summarization-nlp-4" target="_blank">GitHub 저장소</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        과학 지식 질의 응답 시스템 구축 - UP6 팀 프로젝트
+                        <span class="project-period">2025.04.16 ~ 2025.04.21</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> 과학 상식 문서 4,200여 개를 색인하고, 질문 의도 분류 → 문서 검색 → 응답 생성 흐름으로 구성된 RAG(Retrieval Augmented Generation) 시스템을 설계 및 구현한 프로젝트입니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 질의 분류 로직 구현, 유사 문서 검색 파이프라인 개발, 응답 생성 흐름 구성</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, FAISS, LangChain, Upstage Solar API, Streamlit</li>
+                        <li><strong>💡 주요 시도:</strong> 
+                            <ul>
+                                <li>질문 도메인 여부 판단 후 RAG 흐름 제어</li>
+                                <li>FAISS 기반 유사 문서 검색 + Solar 기반 응답 생성</li>
+                                <li>출처 포함 응답 생성 → 사용자 신뢰도 향상</li>
+                                <li>토이셋 기반 빠른 반복 실험 후 전체 확장</li>
+                            </ul>
+                        </li>
+                        <li><strong>🏆 성과:</strong> 최종 MAP 및 MRR 0.8939로 <strong>대회 1위</strong> 달성<br>
+                            <img src="images/Scientific_Knowledge_Question_Answering.png" alt="과학 질의응답 리더보드 결과" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
+                        </li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/KJH121212/project-rag-scienceqa" target="_blank">GitHub 저장소</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>
+                        정부지원금 추천 챗봇
+                        <span class="project-period">2024.12.23 ~ 2024.01.07</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
+                        <li><strong>💡 주요 시도:</strong> 사회적 거리두기·평균 기온 변수 추가, 일본·러시아 데이터를 결합한 학습 데이터 구성</li>
+                        <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/KJH121212/lstm-covid19-predict" target="_blank">GitHub</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        화학 공정 이상 탐지 프로젝트
+                        <span class="project-period">2024.12.23 ~ 2024.01.07</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
+                        <li><strong>💡 주요 시도:</strong> 사회적 거리두기·평균 기온 변수 추가, 일본·러시아 데이터를 결합한 학습 데이터 구성</li>
+                        <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/KJH121212/lstm-covid19-predict" target="_blank">GitHub</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        플루언트 기업 연계 프로젝트
+                        <span class="project-period">2024.12.23 ~ 2024.01.07</span>
+                    </summary>
+                    <ul class="project-detail">
+                        <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
+                        <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
+                        <li><strong>💡 주요 시도:</strong> 사회적 거리두기·평균 기온 변수 추가, 일본·러시아 데이터를 결합한 학습 데이터 구성</li>
+                        <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
+                        <li><strong>🔗 상세링크:</strong> 
+                            <a href="https://github.com/KJH121212/lstm-covid19-predict" target="_blank">GitHub</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
         </ul>
     </section>
 
@@ -98,20 +320,20 @@
         <table>
             <tr><th>구분</th><th>기술 스택</th><th>설명</th></tr>
             <tr><td>언어</td><td>Python, C++, MATLAB</td><td>분석, 데이터 수집, 알고리즘 구현</td></tr>
-            <tr><td>모델링</td><td>PyTorch, LSTM, AutoEncoder</td><td>이상 탐지, 시계열 모델</td></tr>
+            <tr><td>모델링</td><td>PyTorch, Tensorflow, LSTM, AutoEncoder</td><td>이상 탐지, 시계열 모델</td></tr>
             <tr><td>데이터 처리</td><td>Pandas, Numpy, Scikit-learn</td><td>전처리, 정규화, 피처 엔지니어링</td></tr>
             <tr><td>시각화</td><td>Matplotlib, Seaborn, Plotly</td><td>EDA, 분석 결과 시각화</td></tr>
             <tr><td>실험 관리</td><td>Wandb</td><td>하이퍼파라미터 튜닝 및 실험 추적</td></tr>
             <tr><td>웹 배포</td><td>Streamlit</td><td>프로토타입 대시보드 구축</td></tr>
-            <tr><td>협업 도구</td><td>GitHub, Notion, Slack</td><td>프로젝트 관리, 문서화, 협업</td></tr>
+            <tr><td>협업 도구</td><td>Git, GitHub, Notion, Slack</td><td>버전 관리, 문서화, 팀 협업</td></tr>
         </table>
     </section>
 
     <section>
         <h2>📜 Certifications</h2>
         <ul>
-            <li>운전면허증 (2020.06 취득)</li>
-            <li>iBT TOEIC Speaking IM3 (2025.04)</li>
+            <li>운전면허증 1종보통 (2018.02 취득)</li>
+            <li>iBT TOEIC Speaking Level 5 (2025.04)</li>
         </ul>
     </section>
 
@@ -119,7 +341,7 @@
         <h2>📍 Contact & Location</h2>
         <p>Email: <a href="mailto:jihu6033@gmail.com">jihu6033@gmail.com</a></p>
         <p>Phone: +82 010-3389-8271</p>
-        <p>주소: 경기도 안양시</p>
+        <p>주소: 경기도 안양시 엘에스로35(호계동, 호계아크로리버) A동 302호</p>
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25367.893655703192!2d126.95242310064428!3d37.36649141770052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5df670cb54f7%3A0xea7bf0767aad95bf!2z7Zi46rOE7JWE7YGs66Gc66as67KE!5e0!3m2!1sko!2skr!4v1748165486450!5m2!1sko!2skr" 
             width="100%" 
