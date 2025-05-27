@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>아파트 실거래가 예측 프로젝트</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fbfc;
+      color: #333;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1, h2 {
+      color: #005f73;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 6px;
+      margin-top: 40px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .highlight {
+      background-color: #e0f2f1;
+      padding: 8px 12px;
+      border-radius: 5px;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tech-icons img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+    }
+
+    .github-link {
+      margin-top: 20px;
+    }
+
+    .github-link a {
+      display: inline-block;
+      text-decoration: none;
+      color: #0a9396;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .github-link a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>📁 팀 프로젝트: [과학 상식 RAG 기반 질의응답 시스템]</h1>
+
+  <div class="section">
+    <h2>📝 프로젝트 개요</h2>
+    <p>질문과 이전 대화 히스토리를 보고 참고할 문서를 검색엔진에서 추출 후 이를 활용하여 질문에 적합한 대답을 생성하는 태스크입니다.</p>
+  </div>
+
+  <div class="section">
+    <h2>⏱️ 기간 및 인원</h2>
+    <p><span class="highlight">기간:</span> 2025.04.16 ~ 2025.04.21</p>
+    <p><span class="highlight">인원:</span> 총 4명</p>
+  </div>
+
+  <div class="section">
+    <h2>🛠 기술 스택</h2>
+    <p><strong>프로그래밍 언어 및 도구:</strong>  Python, FAISS, LangChain, Streamlit</p>
+    <p><strong>사용 모델:</strong> Upstage Solar API, Custom Query Classifier</p>
+  </div>
+
+  <div class="section">
+    <h2>🔧 핵심 기능</h2>
+    <ul>
+      <li>✔ 과학 상식 문서 색인을 위한 FAISS 기반 벡터 DB 구성</li>
+      <li>✔ 질문 도메인 분류기 구현 (과학 질문 여부 판단)</li>
+      <li>✔ 관련 문서 검색 및 프롬프트 구성 → LLM을 통한 답변 생성</li>
+      <li>✔ 출처 문서 정보 표시 및 Streamlit 기반 UI 제공</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🧑‍💻 내가 기여한 부분</h2>
+    <ul>
+      <li>✔ 질문 도메인 분류 로직 설계 및 예외 처리 플로우 구현</li>
+      <li>✔ FAISS 색인 로딩 및 검색 흐름 구축</li>
+      <li>✔ LangChain PromptTemplate 설계 및 Solar API 연동</li>
+      <li>✔ 사용자 질의 흐름을 고려한 프론트엔드 구조 설계 (Streamlit)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🐛 트러블슈팅</h2>
+    <h3>📌 문제 1: 질문 도메인 판별 실패</h3>
+    <p><strong>- 문제 배경:</strong> 단순 키워드 기준 분류는 일반 대화와 과학 질문을 명확히 구분하지 못해, 엉뚱한 문서가 검색되거나 아예 검색이 누락됨.</p>
+    <p><strong>- 해결 방법:</strong> 사용자 질문을 정규화한 뒤, 과학 키워드 리스트 기반 필터링 외에도 Rule 기반 예외처리 및 fallback 답변 로직을 설계하여 안정성을 높임.</p>
+
+    <h3>📌 문제 2: 검색 결과가 부적절하거나 누락되는 문제</h3>
+    <p><strong>- 문제 배경:</strong> FAISS의 유사도 기준만으로는 질문 의도와 동떨어진 문서가 반환되는 경우가 발생.</p>
+    <p><strong>- 해결 방법:</strong> 검색된 문서의 제목/본문 유사도를 추가 필터로 검토해 상위 3개만 노출하고, 필요 시 검색 결과가 없음을 안내하는 예외 응답 구현.</p>
+  </div>
+
+  <div class="section">
+    <h2>🌟 팀 성과</h2>
+    <ul>
+      <li>✔ 실제 질문-응답 흐름을 자연스럽게 연결한 UX 구조 완성</li>
+      <li>✔ MAP 0.89 / MRR 0.89 기록으로 <strong>대회 1위</strong> 달성</li>
+      <li>✔ 프롬프트 구성 및 검색 전략 개선으로 응답 일관성과 정확도 향상</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💡 깨달은 점</h2>
+    <p>단순히 모델 성능이 아니라, 질문에 알맞은 문서를 얼마나 잘 찾고, 그 문서를 바탕으로 얼마나 자연스럽게 답변을 만들어내는지가 중요한 프로젝트였습니다. RAG 시스템의 핵심은 LLM이 아니라 전체 정보 흐름에 있음을 체감하며, 질문 필터링, 문서 전처리, 프롬프트 설계 등 비모델 영역의 중요성을 깊이 이해하게 되었습니다.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔗 참고 링크</h2>
+    <ul>
+      <li>📁 GitHub 저장소: <span style="color: #999;">비공개 저장소입니다</span></li>
+    </ul>
+  </div>
+
+</body>
+</html>
