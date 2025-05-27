@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>아파트 실거래가 예측 프로젝트</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fbfc;
+      color: #333;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1, h2 {
+      color: #005f73;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 6px;
+      margin-top: 40px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .highlight {
+      background-color: #e0f2f1;
+      padding: 8px 12px;
+      border-radius: 5px;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tech-icons img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+    }
+
+    .github-link {
+      margin-top: 20px;
+    }
+
+    .github-link a {
+      display: inline-block;
+      text-decoration: none;
+      color: #0a9396;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .github-link a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>📁 팀 프로젝트: [일상 대화 요약]</h1>
+
+  <div class="section">
+    <h2>📝 프로젝트 개요</h2>
+    <p>본 프로젝트는 일상생활에서 이루어지는 대화를 바탕으로 핵심 내용을 요약하는 AI 모델을 개발하는 것을 목표로 합니다. 회의, 직장, 여행, 여가, 쇼핑 등 다양한 주제의 대화문을 요약하여, 통화 비서나 회의록 요약 등의 실제 서비스에 활용할 수 있는 모델을 구축합니다.</p>  
+  </div>
+
+  <div class="section">
+    <h2>⏱️ 기간 및 인원</h2>
+    <p><span class="highlight">기간:</span> 2025년 3월 12일 ~ 2025년 3월 24일</p>
+    <p><span class="highlight">인원:</span> 총 5명</p>
+  </div>
+
+  <div class="section">
+    <h2>🛠 기술 스택</h2>
+    <ul>
+      <li><strong>언어 및 환경:</strong> Python, Jupyter Notebook</li>
+      <li><strong>모델 및 프레임워크:</strong> Huggingface Transformers, PyTorch</li>
+      <li><strong>모델 구조:</strong> KoBART (digit82/kobart-summarization)</li>
+      <li><strong>학습 관리:</strong> Huggingface Trainer, EarlyStoppingCallback</li>
+      <li><strong>평가지표:</strong> ROUGE (rouge, rouge_score)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🔧 핵심 기능</h2>
+    <ul>
+      <li>✔ 다양한 발화자 토큰이 포함된 대화 데이터를 전처리하고 tokenization 적용</li>
+      <li>✔ config.yaml 기반 학습/추론 파이프라인 구성</li>
+      <li>✔ wandb 기반 실험 관리, DPO, Solar Pro 임베딩 활용</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🧑‍💻 내가 기여한 부분</h2>
+    <ul>
+      <li>
+        ✔ <strong>Tokenizer 및 Config 구조화:</strong> 다양한 발화자 토큰과 특수 토큰을 효과적으로 처리하기 위해 <code>AutoTokenizer</code> 기반 전처리 구조를 설계하였으며, 학습 및 추론에 필요한 설정값을 <code>YAML</code> 기반으로 분리하여 유지보수성을 높였습니다.
+      </li>
+      <li>
+        ✔ <strong>학습/추론 파이프라인 설계:</strong> 모델 로딩부터 데이터셋 구성, 평가 지표 출력까지 하나의 함수 흐름으로 구현하여 학습 반복과 추론 테스트를 신속하게 수행할 수 있도록 자동화하였습니다.
+      </li>
+      <li>
+        ✔ <strong>다양한 LLM 활용:</strong> Huggingface 기반 <code>KoBART</code> 외에도 <strong>GPT-4o</strong>, <strong>Solar-Pro</strong> 등 최신 언어 모델을 함께 실험하여 다양한 요약 방식의 효과를 비교 분석하였습니다.
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="section">
+    <h2>🐛 트러블슈팅</h2>
+    <h3>📌 긴 문장으로 인한 Token 초과</h3>
+    <p><strong>- 문제 배경:</strong> KoBART 모델의 입력 최대 길이 제한(512 토큰)을 초과하는 대화문이 존재하여 학습 시 오류가 발생했습니다. 특히 평균 20턴, 최대 60턴으로 구성된 대화에서 긴 발화가 많아 token overflow가 자주 발생했습니다.</p>
+    <p><strong>- 해결 방법:</strong> tokenizer 설정 시 `truncation=True` 옵션을 명시하고, `encoder_max_len` 값을 적절히 조정하여 모델이 수용 가능한 범위 내에서 입력을 자르는 방식으로 해결했습니다. 다만 이로 인해 중요한 발화 일부가 잘릴 가능성을 고려하여, dialogue length 분포를 기반으로 최적의 max length를 탐색했습니다.</p>
+
+    <h3>📌 요약 성능 평가의 애매함</h3>
+    <p><strong>- 문제 배경:</strong> 모델의 성능이 좋아졌는지를 판단하기 위한 기준이 명확하지 않았습니다. Rouge 점수는 표준 지표이지만, 정답 요약이 단일 문장으로 제공되어 있고 생성 가능한 요약의 표현이 다양한 상황에서 이 점수만으로 성능을 단정하기 어려웠습니다.</p>
+    <p><strong>- 해결 방법:</strong> Rouge-1, Rouge-2, Rouge-L 등 다수의 지표를 함께 사용하고, 정량 평가 외에도 직접 요약문을 확인하며 정성적으로 비교하는 과정을 병행했습니다. 특히 실험 관리를 위해 <strong>Weights & Biases(wandb)</strong>를 적극 활용하였고, 다양한 버전의 모델을 시각적으로 비교해 평가의 객관성을 높였습니다.</p>
+  </div>
+
+
+  <div class="section">
+    <h2>🌟 팀 성과</h2>
+    <ul>
+      <li>✔ KoBART 기반의 baseline 성능을 안정적으로 구현하고, 다양한 하이퍼파라미터 실험과 tokenizer 설정 최적화를 통해 <strong>평균 ROUGE 점수 향상</strong></li>
+      <li>✔ Solar Pro 임베딩을 통해 의미적으로 유사한 대화를 찾아 few-shot 예시로 활용하여 모델의 표현력 증대 시도</li>
+      <li>✔ 팀원 간 역할을 나누어 EDA, 전처리, 모델 학습, 결과 분석 등 각 단계에서 책임감을 가지고 협업</li>
+      <li>✔ <strong>KoBART, Gemma, DPO</strong> 등 다양한 접근 방식을 실험하며, open model의 한계와 가능성을 비교 분석</li>      
+      <li>최종 리더보드 기준 1위 달성</li>
+      <img src="../images/03_Document_Type_Classification/FINAL_Score.png" alt="최종 결과" />
+
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💡 깨달은 점</h2>
+    <p>요약 모델의 성능은 전처리, 구조, 학습 전략, 실험 설계가 종합적으로 작용한다는 것을 배웠습니다. 다양한 조건에서의 실험과 그 결과를 추적·관리하는 경험을 통해 실무에서도 재현 가능한 파이프라인의 중요성을 체감했습니다.</p>
+    <p>또한, LLM의 성능이 실제로 향상되었는지를 정량적으로 평가하기가 쉽지 않다는 점도 깨달았습니다. Rouge와 같은 지표는 정답과의 유사도를 수치화하지만, 요약이라는 작업의 특성상 다양한 정답이 가능하기 때문에 평가 지표로서의 한계가 존재합니다. 결과적으로 모델 개선이 의미 있는지 판단하기 위해선 정량적 지표 외에도 사람 중심의 정성적 판단과 예시 비교가 함께 이루어져야 함을 느꼈습니다.</p>
+    <p>이 과정에서 Huggingface 플랫폼이 매우 유용하다는 것도 알게 되었습니다. Huggingface는 다양한 사전 학습 모델을 제공할 뿐만 아니라, Tokenizer, Trainer, Metrics 등의 모듈화된 도구를 제공하여 실험과 재현성을 높여줍니다. 특히 `transformers` 라이브러리는 PyTorch 및 TensorFlow 기반 모델을 손쉽게 불러오고 fine-tuning 할 수 있도록 도와줘, NLP 연구와 실무 모두에서 중요한 역할을 한다는 것을 실감했습니다.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔗 참고 링크</h2>
+    <ul>
+      <li>📁 GitHub 저장소: <span style="color: #999;">비공개 저장소입니다</span></li>
+      <li>📚 Huggingface: <a href="https://huggingface.co/" target="_blank">huggingface.co</a></li>
+      <li>🔍 Gemma Docs: <a href="https://ai.google.dev/gemma/docs/core?hl=ko" target="_blank">gemma/docs</a></li>
+    </ul>
+  </div>
+</body>
+</html>
