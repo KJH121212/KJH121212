@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>LSTM을 이용한 코로나 확진자수 예측 프로그램</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fbfc;
+      color: #333;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1, h2 {
+      color: #005f73;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 6px;
+      margin-top: 40px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .highlight {
+      background-color: #e0f2f1;
+      padding: 8px 12px;
+      border-radius: 5px;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tech-icons img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+    }
+
+    .github-link {
+      margin-top: 20px;
+    }
+
+    .github-link a {
+      display: inline-block;
+      text-decoration: none;
+      color: #0a9396;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .github-link a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>📁 졸업논문: [LSTM 코로나 확진자수 예측 프로그램]</h1>
+
+  <div class="section">
+    <h2>📝 프로젝트 개요</h2>
+    <p>딥러닝 모델인 LSTM(Long Short-Term Memory)을 활용하여 코로나 확진자수를 예측하고, 모델 성능을 개선하기 위해 외부 변수(사회적 거리두기, 평균기온) 및 해외 확진자 데이터를 결합한 학사 졸업 프로젝트입니다.</p>
+  </div>
+
+  <div class="section">
+    <h2>⏱️ 기간 및 인원</h2>
+    <p><span class="highlight">기간:</span> 2023.09 ~ 2023.12</p>
+    <p><span class="highlight">인원:</span> 개인 프로젝트</p>
+  </div>
+
+  <div class="section">
+    <h2>🛠 기술 스택</h2>
+    <div class="tech-icons">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/python.svg" alt="Python" title="Python">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/pytorch.svg" alt="PyTorch" title="PyTorch">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔧 핵심 기능</h2>
+    <ul>
+      <li>✔ 사회적 거리두기 정도, 평균 기온을 변수로 추가하여 예측 성능 향상</li>
+      <li>✔ 일본·러시아 확진자 데이터를 추가한 LSTM 모델 학습</li>
+      <li>✔ 시계열 예측을 위한 단일/다중 입력 데이터 구조 구현</li>
+      <li>✔ MAE 기반 성능 평가 및 오차 분석</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🐛 트러블 슈팅</h2>
+    <ul>
+      <li>✔ 해외 데이터 병합 시 성능 저하 → 각국의 전염병 패턴 차이로 인한 학습 어려움 확인</li>
+      <li>✔ 평균 기온 변수를 추가했을 때 오히려 모델 정확도 저하 → 영향력 낮은 변수는 오히려 방해 가능성</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🌟 팀 성과</h2>
+    <ul>
+      <li>✔ 사회적 거리두기 변수만 추가했을 때 MAE 242로 가장 높은 성능 확인</li>
+      <li>✔ "내일 확진자 추세는 오늘과 유사"라는 전제에 대한 검증 실험 포함</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🧑‍💻 개인 기여</h2>
+    <ul>
+      <li>✔ 전체 실험 설계 및 데이터 수집/전처리</li>
+      <li>✔ LSTM 모델 구조 정의 및 학습</li>
+      <li>✔ 변수 실험 및 결과 해석 보고서 작성</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💡 깨달은 점</h2>
+    <p>데이터를 단순히 늘리는 것보다, 실제 문제에 영향을 주는 요인을 정확히 분석하는 것이 중요하다는 것을 체감했습니다. 예측 모델 성능 향상을 위해서는 변수의 질적 선택과 정교한 전처리 설계가 필수적이라는 점을 배웠습니다.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔗 참고 링크</h2>
+    <ul>
+      <li>📁 GitHub 저장소: <span style="color: #999;">비공개 저장소입니다</span></li>
+      <li><a href="./01_LSTM_Covid_prediction.pdf" target="_blank">📄 졸업논문 PDF 보기</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>
