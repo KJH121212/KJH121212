@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>김지후 | 머신러닝 엔지니어 포트폴리오</title>
     <style>
         /* 🔷 전체 기본 스타일 */
@@ -207,6 +208,47 @@
             align-items: center;
             width: 100%;
         }
+        @media (max-width: 768px) {
+            body {
+                font-size: 0.95em;
+                padding: 0 10px;
+            }
+
+            header {
+                padding: 20px 10px 10px;
+            }
+
+            header img {
+                width: 100px;
+            }
+
+            h1 {
+                font-size: 1.2em;
+            }
+
+            .project-header,
+            .education-item,
+            .certification-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            table, th, td {
+                font-size: 0.85em;
+                word-break: break-word;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .project-period {
+                font-size: 0.8em;
+            }
+        }
+
     </style>
 
 </head>
