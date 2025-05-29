@@ -265,6 +265,7 @@
                         <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
                         <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
+                        <li><strong>🤖 사용 모델:</strong> LSTM</li>
                         <li><strong>💡 주요 시도:</strong>
                             <ul class="project-sublist">
                                 <li>✔ <strong>외부 변수 추가:</strong> 사회적 거리두기 단계 및 평균 기온 변수 도입</li>
@@ -286,7 +287,8 @@
                     <ul class="project-detail">
                         <li><strong>📌 개요:</strong> 서울시 아파트 실거래 데이터를 기반으로 다양한 모델을 실험하여 아파트 매매가를 예측하는 팀 프로젝트입니다. 부동산 시장의 특성을 반영한 피처 엔지니어링과 회귀 모델링 기법을 통해 예측 성능을 향상시키고자 했습니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> 회귀 모델 구현, 피처 엔지니어링 기획 및 적용, 하이퍼파라미터 튜닝</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, XGBoost, Scikit-learn, Pandas, Seaborn, Matplotlib</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, Scikit-learn, Pandas, Seaborn, Matplotlib</li>
+                        <li><strong>🤖 사용 모델:</strong> LightGBM, XGBoost, CatBoost, TabNet</li>
                         <li><strong>💡 주요 시도:</strong>
                             <ul class="project-sublist">
                                 <li>✔ <strong>파생 변수 설계:</strong> 건축연도 기반 신축 여부, 강남/강북 여부 생성</li>
@@ -313,13 +315,14 @@
                     <ul class="project-detail">
                         <li><strong>📌 개요:</strong> 금융, 의료, 보험 등 산업 전반의 문서를 이미지 기반으로 분류하는 문서 타입 분류 대회에 참가하여, 다양한 이미지 증강과 앙상블 모델을 활용해 고성능 모델을 개발한 프로젝트입니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> Sinogram 기반 실험 설계 및 테스트, 회전·노이즈 이미지 대응 전략 수립</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, PyTorch, Albumentations, Augraphy, YOLOv12, ResNet50, EfficientNet-B3, SwinTransformer</li>
+                        <li><strong>🛠️ 기술 스택:</strong>  Python, PyTorch (with torchvision), Albumentations, Augraphy, Jupyter Notebook, Pandas, Wandb</li>
+                        <li><strong>🤖 사용 모델:</strong> ResNet, EfficientNet-B3, SwinTransformer-T, YOLOv12</li>
                         <li><strong>💡 주요 시도:</strong>
                             <ul class="project-sublist">
                                 <li>✔ <strong>이미지 증강:</strong> Mixup, Cutmix, 마스킹, 노이즈, 회전 등 적용</li>
                                 <li>✔ <strong>Sinogram 실험:</strong> 비정형 문서 패턴 대응을 위한 구조 설계</li>
                                 <li>✔ <strong>YOLO 기반 객체 탐지:</strong> 타이틀 탐지 후 분류 연동 전략 실험</li>
-                                <li>✔ <strong>다단계 앙상블:</strong> ResNet + EfficientNet + SwinTransformer 조합</li>
+                                <li>✔ <strong>다단계 앙상블:</strong> ResNet + EfficientNet + YOLOv12 조합</li>
                             </ul>
                         </li>
                         <li><strong>🏆 성과:</strong> 다단계 앙상블 및 객체 탐지 기반 재분류 전략으로 최종 리더보드 1위 달성
@@ -339,15 +342,13 @@
                     </summary>
                     <ul class="project-detail">
                         <li><strong>📌 개요:</strong> 다양한 일상 대화(회의, 상담, 여가 등)를 요약하는 NLP 경진대회에 참가하여, 비정형 텍스트 데이터를 기반으로 핵심 내용을 추출하는 요약 모델을 설계하고 실험한 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 한국어 요약 모델 실험, Prompt 기반 Few-shot 전략 설계, Embedding 유사도 활용한 데이터 증강 수행</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, PyTorch Lightning, Huggingface Transformers, Unsloth, Wandb, Rouge</li>
+                        <li><strong>🧑‍💻 역할:</strong> 다양한 한국어 요약 모델 실험</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, PyTorch, Huggingface Transformers, Rouge</li>
+                        <li><strong>🤖 사용 모델:</strong> KoBART, SOLAR Pro, Gemma, OpenAI, GPT-4o</li>
                         <li><strong>💡 주요 시도:</strong>
                             <ul class="project-sublist">
                                 <li>✔ <strong>한국어 특화 모델 실험:</strong> KoBART, SOLAR Pro 등 다양한 사전학습 모델 적용</li>
                                 <li>✔ <strong>발화자 분리 및 필터링:</strong> 대화 구조에 따른 발화자 구분과 길이 기반 전처리</li>
-                                <li>✔ <strong>Few-shot 학습 구성:</strong> Gemma, OpenAI 기반 Prompt 설계 및 테스트</li>
-                                <li>✔ <strong>DPO 활용:</strong> Direct Preference Optimization으로 요약 스타일 향상</li>
-                                <li>✔ <strong>데이터 증강:</strong> Cosine Similarity 기반 Embedding으로 Few-shot 보강</li>
                             </ul>
                         </li>
                         <li><strong>🏆 성과:</strong> 다양한 사전학습 모델 비교 및 커스터마이징을 통해 현실적인 요약 스타일 확보, 요약 비율 및 정밀도 기준으로 안정적인 성능 달성
@@ -366,17 +367,20 @@
                         <span class="project-period">2024.04.02 ~ 2024.04.08</span>
                     </summary>
                     <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> 사용자 질문을 기반으로 적절한 정부지원 서비스를 추천하는 RAG 기반 챗봇 시스템을 설계 및 구현한 개인 프로젝트입니다. Solar API와 LangChain을 이용해 검색 및 생성 기능을 통합했습니다.</li>
+                        <li><strong>📌 개요:</strong> 사용자 질문을 기반으로 적절한 정부지원 서비스를 추천하는 RAG 기반 챗봇 시스템을 설계 및 구현한 팀 프로젝트입니다. Solar API와 LangChain을 이용해 검색 및 생성 기능을 통합했습니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> 전체 파이프라인 설계 및 구현 (문서 로딩, 인덱싱, 검색, 프롬프트 생성, 응답 출력 등)</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, LangChain, FAISS, Solar API, Streamlit, JSON</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, LangChain, FAISS, Solar API, Streamlit</li>
+                        <li><strong>🤖 사용 모델:</strong> Solar-pro (Upstage)</li>
                         <li><strong>💡 주요 시도:</strong></li>
                             <ul class="project-sublist">
-                                <li>✔ <strong>문서 구조 분석:</strong> JSON 조건 기반 필터링 및 색인 구조 설계</li>
+                                <li>✔ <strong>데이터 수집:</strong> 정부 API 호출 및 웹 크롤링을 통해 공공 서비스 데이터를 확보하고, 이를 조건 기반 필터링 및 색인 구조에 맞게 전처리</li>
                                 <li>✔ <strong>RAG 검색 파이프라인 구현:</strong> 사용자 질문 기반 문서 검색 및 프롬프트 자동 생성</li>
                                 <li>✔ <strong>응답 생성:</strong> Solar API를 통한 자연스러운 한글 답변 출력</li>
                                 <li>✔ <strong>인터페이스 구현:</strong> Streamlit 기반 검색 인터페이스 제작</li>
                             </ul>
                         <li><strong>🏆 성과:</strong> 조건 기반 문서 추천 정확도 향상, 사용자 질의에 대한 맞춤형 응답 생성 성공</li>
+                            <img src="./images/05_Smart_Subsidy_Finder/service_demo1.png" alt="정부지원금 추천 챗봇 데모1" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
+                            <img src="./images/05_Smart_Subsidy_Finder/service_demo2.png" alt="정부지원금 추천 챗봇 데모2" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
                         <li><strong>🔗 상세링크:</strong> 
                             <a href="./projects/05_Smart_Subsidy_Finder.html" target="_blank">프로젝트 상세 내용</a>
                         </li>
@@ -392,13 +396,13 @@
                     <ul class="project-detail">
                         <li><strong>📌 개요:</strong> 과학 상식 문서 4,200여 개를 색인하고, 질문 의도 분류 → 문서 검색 → 응답 생성 흐름으로 구성된 RAG(Retrieval Augmented Generation) 시스템을 설계 및 구현한 프로젝트입니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> 질의 분류 로직 구현, 유사 문서 검색 파이프라인 개발, 응답 생성 흐름 구성</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, FAISS, LangChain, Upstage Solar API, Streamlit</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, FAISS, LangChain, Streamlit</li>
+                        <li><strong>🤖 사용 모델:</strong> Solar-pro (Upstage)</li>
                         <li><strong>💡 주요 시도:</strong></li>
                             <ul class="project-sublist">
                                 <li>✔ <strong>도메인 분류:</strong> 질문 유형 분류를 통한 흐름 분기 및 최적 처리 전략 도입</li>
                                 <li>✔ <strong>문서 검색:</strong> FAISS를 활용한 유사 문서 검색</li>
                                 <li>✔ <strong>답변 생성:</strong> Solar API 기반 문서 기반 답변 생성 및 출처 포함</li>
-                                <li>✔ <strong>빠른 반복 실험:</strong> 토이셋을 활용해 빠르게 설계 반복</li>
                             </ul>
                         <li><strong>🏆 성과:</strong> 최종 MAP 및 MRR 0.8939로 <strong>대회 1위</strong> 달성<br>
                             <img src="images/06_Science_Question_Answering/Final_score.png" alt="과학 질의응답 리더보드 결과" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
@@ -419,6 +423,7 @@
                         <li><strong>📌 개요:</strong> 공정 데이터를 활용해 이상 징후를 탐지하는 머신러닝 기반 프로젝트입니다. 화학 공정 시뮬레이션 데이터를 활용해 정상/비정상을 구분하는 다양한 이상 탐지 모델을 적용하고 비교 평가하였습니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> EDA, 이상 탐지 모델 설계 및 성능 비교, wandb 기반 실험 관리 및 후처리 로직 구현</li>
                         <li><strong>🛠️ 기술 스택:</strong> Python, Scikit-learn, PyTorch, wandb, Pandas, Matplotlib</li>
+                        <li><strong>🤖 사용 모델:</strong> Isolation Forest, One-Class SVM, AutoEncoder, Deep SVDD</li>
                         <li><strong>💡 주요 시도:</strong></li>
                             <ul class="project-sublist">
                                 <li>✔ <strong>EDA 분석:</strong> t-SNE 기반 시각화 및 센서 상관관계 분석</li>
@@ -442,15 +447,13 @@
                     <ul class="project-detail">
                         <li><strong>📌 개요:</strong> AI 버튜버 서비스를 위한 음성 합성/시나리오 생성 자동화 시스템을 기획하고, 미드저니와 텍스트-투-스피치 API 기반의 프로토타입을 제작한 프로젝트입니다.</li>
                         <li><strong>🧑‍💻 역할:</strong> 음성 캐릭터 설정, 시나리오 자동 생성 파이프라인 기획 및 음성 API 적용</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, TTS API(OpenAI), Midjourney, Prompt Engineering</li>
+                        <li><strong>🛠️ 기술 스택:</strong> Python, TTS API(OpenAI), livekit, Prompt Engineering</li>
                         <li><strong>💡 주요 시도:</strong></li>
                             <ul class="project-sublist">
                                 <li>✔ <strong>AI 음성 캐릭터 디자인:</strong> 인물별 감정 및 말투 설정을 통한 프롬프트 구성</li>
-                                <li>✔ <strong>시나리오 자동 생성:</strong> 다양한 상황별 대화 시나리오를 조건 기반 생성</li>
-                                <li>✔ <strong>음성 합성:</strong> TTS API를 이용한 감정 기반 음성 생성</li>
                                 <li>✔ <strong>프로토타입 제작:</strong> 캐릭터 아바타 및 음성 출력 데모 구현</li>
                             </ul>
-                        <li><strong>🏆 성과:</strong> 버튜버 서비스 기획부터 프로토타입 완성까지 전체 파이프라인 주도 및 제작 완료</li>
+                        <li><strong>🏆 성과:</strong> 현재 진행 중인 프로젝트</li>
                         <li><strong>🔗 상세링크:</strong> 
                             <a href="https://github.com/KJH121212/AI_Vtuber_Demo" target="_blank">GitHub 저장소</a>
                         </li>
@@ -470,7 +473,7 @@
                 <span class="certification-date">2018.02 취득</span>
             </li>
             <li class="certification-item">
-                <span class="certification-name">iBT TOEIC Speaking IM3</span>
+                <span class="certification-name">IBT TOEIC Speaking IM3</span>
                 <span class="certification-date">2025.04 취득</span>
             </li>
         </ul>
