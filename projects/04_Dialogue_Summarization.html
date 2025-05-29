@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>아파트 실거래가 예측 프로젝트</title>
+  <title>일상 대화 요약 시스템</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -136,7 +136,8 @@
 
     <h3>📌 요약 성능 평가의 애매함</h3>
     <p><strong>- 문제 배경:</strong> 모델의 성능이 좋아졌는지를 판단하기 위한 기준이 명확하지 않았습니다. Rouge 점수는 표준 지표이지만, 정답 요약이 단일 문장으로 제공되어 있고 생성 가능한 요약의 표현이 다양한 상황에서 이 점수만으로 성능을 단정하기 어려웠습니다.</p>
-    <p><strong>- 해결 방법:</strong> Rouge-1, Rouge-2, Rouge-L 등 다수의 지표를 함께 사용하고, 정량 평가 외에도 직접 요약문을 확인하며 정성적으로 비교하는 과정을 병행했습니다. 특히 실험 관리를 위해 <strong>Weights & Biases(wandb)</strong>를 적극 활용하였고, 다양한 버전의 모델을 시각적으로 비교해 평가의 객관성을 높였습니다.</p>
+    <p><strong>- 해결 방법:</strong> Rouge-1, Rouge-2, Rouge-L 등 다수의 지표를 함께 사용하고, 정량 평가 외에도 직접 요약문을 확인하며 정성적으로 비교하는 과정을 병행했습니다. 학습용 데이터가 존재하지 않는 테스트 환경이었기 때문에 wandb 등 실험 관리 도구를 사용할 수는 없었으며, 대신 <strong>다양한 출력 예시를 수집하고 직접 비교·분석</strong>하여 모델 성능을 평가했습니다.</p>
+
   </div>
 
 
@@ -144,10 +145,9 @@
     <h2>🌟 팀 성과</h2>
     <ul>
       <li>✔ KoBART 기반의 baseline 성능을 안정적으로 구현하고, 다양한 하이퍼파라미터 실험과 tokenizer 설정 최적화를 통해 <strong>평균 ROUGE 점수 향상</strong></li>
-      <li>✔ Solar Pro 임베딩을 통해 의미적으로 유사한 대화를 찾아 few-shot 예시로 활용하여 모델의 표현력 증대 시도</li>
       <li>✔ 팀원 간 역할을 나누어 EDA, 전처리, 모델 학습, 결과 분석 등 각 단계에서 책임감을 가지고 협업</li>
-      <li>✔ <strong>KoBART, Gemma, DPO</strong> 등 다양한 접근 방식을 실험하며, open model의 한계와 가능성을 비교 분석</li>      
-      <li>최종 리더보드 기준 1위 달성</li>
+      <li>✔ <strong>KoBART, Gemma</strong> 등 다양한 접근 방식을 실험하며, open model의 한계와 가능성을 비교 분석</li>      
+      <li>최종 리더보드 기준 3위 달성</li>
       <img src="../images/03_Document_Type_Classification/FINAL_Score.png" alt="최종 결과" />
 
     </ul>
@@ -164,8 +164,6 @@
     <h2>🔗 참고 링크</h2>
     <ul>
       <li>📁 GitHub 저장소: <span style="color: #999;">비공개 저장소입니다</span></li>
-      <li>📚 Huggingface: <a href="https://huggingface.co/" target="_blank">huggingface.co</a></li>
-      <li>🔍 Gemma Docs: <a href="https://ai.google.dev/gemma/docs/core?hl=ko" target="_blank">gemma/docs</a></li>
     </ul>
   </div>
 </body>
