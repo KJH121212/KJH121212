@@ -107,13 +107,6 @@
       <li>✔ 문서+질문 기반 응답 생성을 위한 프롬프트 엔지니어링</li>
       <li>✔ 사용자가 선택한 조건에 따라 맞춤형 지원금 추천</li>
     </ul>
-
-    <details>
-      <summary style="cursor:pointer; color:#0a9396; margin-top:10px;">📸 데모 이미지 보기</summary>
-      <img src="../images/05_Smart_Subsidy_Finder/service_demo1.png" alt="데모 서비스 화면1" style="margin-top:10px;">
-      <img src="../images/05_Smart_Subsidy_Finder/service_demo2.png" alt="데모 서비스 화면2" style="margin-top:10px;">
-    </details>
-
   </div>
 
   <div class="section">
@@ -154,13 +147,31 @@
   <div class="section">
     <h2>🐛 트러블슈팅</h2>
 
-    <h3>📌 문제 1: 임베딩 비용 급증</h3>
-    <p><strong>- 문제 배경:</strong> 수집한 정부지원금 데이터는 구조상 중복 항목이 많았으며, 이로 인해 벡터 임베딩 대상 문서 수가 급격히 증가하여 저장 비용 및 쿼리 성능 저하가 발생할 가능성이 컸습니다.</p>
-    <p><strong>- 해결 방법:</strong> 중복 유형(완전 동일, ID 동일/내용 다름, 이름 동일/ID 다름)에 따라 병합 전략을 달리 설정하고, 리스트는 중복 제거 후 병합, 문자열은 구분자(||) 병합, 딕셔너리는 key 기준 통합하는 알고리즘을 구현하여 중복을 정제하고 임베딩 비용을 약 66% 이상 절감했습니다.</p>
+    <h3>📌 청크 분할 기준 선택 문제</h3>
+    <p><strong>- 문제 배경:</strong> 문서 내용을 나눌 때 <em>문자 길이 기반</em>과 <em>토큰 개수 기반</em> 중 어떤 기준이 성능에 유리할지 판단이 필요했습니다.</p>
+    <p><strong>- 해결 방법:</strong> LLM의 문맥 파악 단위가 '토큰'이라는 점에 착안해 <strong>토큰 수 기반 분할</strong>을 채택했습니다. 그 결과, 의미 단절 없이 안정적으로 문서가 분할되어 문서 유사도 탐색의 정확도를 높일 수 있었습니다.</p>
 
-    <h3>📌 문제 2: 변경된 문서만 임베딩하는 방법의 구현 난점</h3>
-    <p><strong>- 문제 배경:</strong> 데이터가 정기적으로 변경되기 때문에 전체를 다시 임베딩하면 비효율적이었습니다. 그러나 JSON의 구조가 복잡하고 단순한 해시 비교로는 내용 변경을 탐지하기 어려웠습니다.</p>
-    <p><strong>- 해결 방법:</strong> 이전 JSON을 백업한 뒤, 현재 JSON과 구조적으로 비교하는 로직을 도입했습니다. 서비스 ID 기준으로 매칭한 뒤, 내부 필드 내용을 정밀 비교하여 변경 여부를 판단하고, 변경된 문서만 임베딩하는 효율적인 업데이트 구조를 구현했습니다.</p>
+    <h3>📌 임베딩 비용 과다 발생 문제</h3>
+    <p><strong>- 문제 배경:</strong> 사전 전처리를 생략하면 중복된 문서가 대량 포함되어 임베딩 비용이 크게 증가했습니다.</p>
+    <p><strong>- 해결 방법:</strong> EDA를 통해 <strong>완전 중복 / 부분 중복 데이터를 구분하여 병합</strong>했습니다. 구체적으로는 <code>서비스ID</code>와 <code>서비스명</code> 기준으로 데이터를 비교하고, 세부 내용이 다른 경우에도 key 기준으로 dict 병합, 리스트 병합, 문자열 병합 등을 수행하여 데이터 건수를 대폭 줄였습니다.</p>
+    <p><strong>- 전처리 결과:</strong></p>
+    <figure>
+      <img src="../images/05_Smart_Subsidy_Finder/EDA4.png" alt="서비스ID와 서비스명을 이용한 중복 확인" />
+      <figcaption>🔍 서비스ID와 서비스명을 이용한 중복 확인 결과</figcaption>
+      <img src="../images/05_Smart_Subsidy_Finder/EDA1.png" alt="서비스 수 비교 시각화" />
+      <figcaption>🔍 병합 전후 서비스 수 비교</figcaption>
+    </figure>
+
+
+    <h3>📌 전체 재임베딩 비효율 문제</h3>
+    <p><strong>- 문제 배경:</strong> JSON 데이터가 업데이트될 때마다 전체 문서를 재임베딩하면 시간이 오래 걸리고 자원이 낭비됩니다.</p>
+    <p><strong>- 해결 방법:</strong> <code>prev.json</code>과 <code>new.json</code>을 비교하여 <strong>변경된 문서만 추출하여 임베딩</strong>하도록 개선했습니다. 단순 해시 비교가 아닌 JSON 필드 단위로 비교하기 때문에 변경 유형과 원인을 파악할 수 있으며, 변경된 문서만 처리함으로써 비용을 크게 줄일 수 있었습니다.</p>
+    <p><strong>- 처리 방식:</strong></p>
+    <ul>
+      <li><strong>추가됨:</strong> new에만 있는 문서는 신규 임베딩</li>
+      <li><strong>변경됨:</strong> ID는 같지만 내용이 달라진 문서는 재임베딩</li>
+      <li><strong>삭제됨:</strong> 이전에는 있었지만 현재는 사라진 문서는 벡터DB에서 제거</li>
+    </ul>
   </div>
 
   <div class="section">
@@ -170,12 +181,18 @@
       <li>✔ Solar 임베딩 기반 검색과 LangChain 흐름을 안정적으로 통합</li>
       <li>✔ 프롬프트 설계에 따라 응답 품질 차이를 명확히 확인하고 개선</li>
     </ul>
+    <details>
+      <summary style="cursor:pointer; color:#0a9396; margin-top:10px;">📸 데모 이미지 보기</summary>
+      <img src="../images/05_Smart_Subsidy_Finder/service_demo1.png" alt="데모 서비스 화면1" style="margin-top:10px;">
+      <img src="../images/05_Smart_Subsidy_Finder/service_demo2.png" alt="데모 서비스 화면2" style="margin-top:10px;">
+    </details>
   </div>
 
   <div class="section">
     <h2>💡 깨달은 점</h2>
-    <p>기존 RAG 구조를 실제 정부 문서에 적용하면서, 단순 문서 요약이 아닌 조건 기반 질의 응답이 얼마나 섬세한 문맥 처리와 프롬프트 설계에 달려 있는지를 깨달았습니다. 사용자의 질문에 직접적으로 연결되는 정보의 흐름을 구성하는 것이 핵심이라는 점을 학습할 수 있었습니다.</p>
+    <p>서비스를 실제로 운영하기 위해서는 단순히 잘 작동하는 모델을 만드는 것을 넘어서, <strong>운영 비용을 줄이는 구조적 설계</strong>가 필수적임을 체감했습니다. 특히 임베딩은 비용이 많이 드는 작업이기 때문에, 데이터 변경 여부를 정밀하게 탐지하여 <strong>변경된 문서만 선별적으로 임베딩</strong>하는 방식이 효과적이었습니다. 이를 위해 고안한 데이터 전처리 및 병합 전략이 서비스 효율성에 직접적인 영향을 준다는 점에서 <strong>데이터 전처리의 중요성</strong>을 다시 한번 깊이 있게 깨달았습니다.</p>
   </div>
+
 
   <div class="section">
     <h2>🔗 참고 링크</h2>

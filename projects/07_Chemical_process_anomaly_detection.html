@@ -83,7 +83,7 @@
 
   <div class="section">
     <h2>📝 프로젝트 개요</h2>
-    <p>화학 공정 시뮬레이션 데이터를 기반으로 정상/비정상 상태를 탐지하는 이상 탐지 시스템을 구축한 프로젝트입니다. 센서 및 제어 변수 데이터를 활용하여 다양한 비지도 학습 기반의 모델을 비교하고, 후처리를 통해 실제 운영에서의 적용 가능성을 높이고자 하였습니다.</p>
+    <p>화학 공정 시뮬레이션 데이터를 기반으로 정상/비정상 상태를 탐지하는 이상 탐지 시스템을 구축한 프로젝트입니다. 센서(xmeas_*)와 제어 변수(xmv_*) 데이터를 바탕으로 다양한 비지도 학습 기반의 모델을 실험하고 비교했으며, 시뮬레이션 단위의 후처리를 통해 실전 활용성을 높이고자 했습니다.</p>
   </div>
 
   <div class="section">
@@ -102,45 +102,131 @@
   <div class="section">
     <h2>🔧 핵심 기능</h2>
     <ul>
-      <li>✔ t-SNE 기반 데이터 시각화로 test와 train의 분포 차이 분석</li>
-      <li>✔ 센서 간 상관관계를 고려한 feature redundancy 제거 전략 수립</li>
-      <li>✔ 다양한 이상 탐지 알고리즘 적용 및 재구성 오차/거리 기반 이상 판별</li>
-      <li>✔ simulationRun 단위 후처리 적용으로 실전 활용도 향상</li>
+      <li>✔ t-SNE 기반 시각화로 train/test 데이터 분포 차이 분석</li>
+      <li>✔ 상관계수 기반 feature selection을 통한 redundancy 제거</li>
+      <li>✔ 다양한 이상 탐지 모델 적용 및 성능 비교</li>
+      <li>✔ run 단위 후처리 적용 (5% 이상 이상 샘플 존재 시 run 전체 이상 판단)</li>
     </ul>
+    <details style="margin-top: 10px;">
+      <summary style="cursor:pointer; color:#0a9396;">📊 시스템 워크플로우 보기</summary>
+      <div style="text-align: center; margin-top: 10px;">
+        <img src="../images/07_Chemical_process_anomaly_detection/workflow.png" alt="RAG 시스템 워크플로우" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ 전체 모델링 파이프라인</p>
+      </div>
+    </details>
   </div>
 
   <div class="section">
     <h2>🧑‍💻 내가 기여한 부분</h2>
     <ul>
-      <li>✔ 전처리 및 feature 간 상관관계 기반 필터링 전략 설계</li>
-      <li>✔ wandb를 통한 실험 자동화 및 결과 모니터링 환경 구성</li>
-      <li>✔ simulationRun 단위로 이상 비율 계산 후 후처리 로직 구현</li>
+      <li>✔ 상관계수 기반 feature 제거 및 필터링 전략 설계</li>
+      <li>✔ wandb 연동을 통한 실험 자동화 및 로깅 설정</li>
+      <li>✔ simulationRun 단위 후처리 로직 구현</li>
     </ul>
   </div>
 
   <div class="section">
     <h2>🐛 트러블슈팅</h2>
-    <h3>📌 문제 1: 센서 간 중복 정보로 인한 학습 성능 저하</h3>
-    <p><strong>- 문제 배경:</strong> 일부 센서 변수(xmeas_*)와 제어 변수(xmv_*) 사이에 높은 상관관계가 존재하여, 모델 학습 시 redundant feature가 오히려 noise로 작용할 우려가 있었습니다.</p>
-    <p><strong>- 해결 방법:</strong> xmeas-xmeas는 하나만 유지, xmeas-xmv는 xmv를 우선적으로 보존, xmv-xmv는 모두 유지하는 전략으로 상관계수 기반 필터링을 수행했습니다.</p>
 
-    <h3>📌 문제 2: Run 단위로 분리된 데이터의 평가 방식</h3>
-    <p><strong>- 문제 배경:</strong> 데이터가 시뮬레이션 단위로 구성되어 있었으나, 샘플 단위의 예측만으로는 실제 이상 여부를 파악하기 어려웠습니다.</p>
-    <p><strong>- 해결 방법:</strong> 각 run 내에서 이상 탐지된 샘플이 5%를 초과하면 해당 run 전체를 이상으로 판단하는 후처리 로직을 구현하여, 실제 공정에서의 판단 기준에 부합하도록 설계했습니다.</p>
+    <h3>📌 중복 정보 및 차원의 저주</h3>
+    <p><strong>- 문제:</strong> 센서(xmeas)와 제어 변수(xmv) 간 높은 상관관계로 인한 redundant feature가 존재하고, feature 수가 40개 이상으로 고차원 학습의 어려움이 발생함</p>
+    <p><strong>- 해결:</strong> xmv는 반드시 유지, xmeas는 상관관계 기반으로 필터링. xmeas-xmeas는 하나 제거, xmeas-xmv는 xmv 유지</p>
+    <p><strong>- 인사이트:</strong> 단순히 feature 수를 줄이기보다는 도메인 지식 기반의 선택이 중요함</p>
+    <details style="margin-top: 10px;">
+      <summary style="cursor:pointer; color:#0a9396;">📊 상관계수 EDA</summary>
+      <div style="text-align: center; margin-top: 10px;">
+        <img src="../images/07_Chemical_process_anomaly_detection/cor_graph.png" alt="상관계수 그래프" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ 상관계수 그래프</p>
+        <img src="../images/07_Chemical_process_anomaly_detection/correlation.png" alt="상관계수 0.9이상인 변수들" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ 상관계수가가 0.9 이상인 변수들을 xmeas-xmeas, xmeas-xmv, xmv-xmv 3가지 종류로 나누어서 시각화</p>
+      </div>
+    </details>
+
+    <h3>📌 Scaler/상관계수 threshold 무의미</h3>
+    <p><strong>- 실험:</strong> Standard / MinMax / Robust Scaler를 비교하고, 상관계수 기준도 0.8과 0.9로 실험함</p>
+    <p><strong>- 결과:</strong> scaler는 성능에 큰 차이를 보이지 않으며, threshold 조정 역시 제거 feature 수나 성능 향상에 의미 있는 영향을 주지 않음</p>
+    <p><strong>- 결론:</strong> 기본 설정 유지가 합리적이며, feature 조합과 모델 구조가 성능에 더 영향 큼</p>    
+    <details style="margin-top: 10px;">
+      <summary style="cursor:pointer; color:#0a9396;">📊 scaler/correlation 비교 실험 (wandb)</summary>
+      <div style="text-align: center; margin-top: 10px;">
+        <img src="../images/07_Chemical_process_anomaly_detection/cor_wandb.png" alt="상관계수에 따른 accuracy 차이" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ 상관계수0.8과 0.9 비교 결과: 유의미한 acc 변화 없음.</p>
+        <img src="../images/07_Chemical_process_anomaly_detection/scaler_wandb.png" alt="scaler에 따른 accuracy 차이" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ scaler 별 acc 비교: 유의미한 변화 없음</p>
+      </div>
+    </details>
+
+    <h3>📌 Data Augmentation 실패</h3>
+    <p><strong>- 시도:</strong> 랜덤 feature 제거, 노이즈 추가, 연속 변동 등 다양한 방식으로 극단값 및 연속 이상치를 시뮬레이션하여 이상 데이터 생성을 시도함.</p>
+    <p><strong>- 결과:</strong> 생성된 이상치는 실제 test 데이터와 분포가 달랐으며, t-SNE 시각화 결과에서도 test와의 유사성이 떨어지는 것으로 나타나 augmentation 전략은 실패함.</p>
+
+    <details style="margin-top: 10px;">
+      <summary style="cursor:pointer; color:#0a9396;">📊 t-SNE 비교 시각화</summary>
+      <div style="text-align: center; margin-top: 10px;">
+        <img src="../images/07_Chemical_process_anomaly_detection/t-sne_test-train" alt="t-SNE: test-train 비교" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ test 데이터 내부에 train과 명확히 구별되는 클러스터들이 다수 존재함을 확인할 수 있음.</p>
+        <img src="../images/07_Chemical_process_anomaly_detection/t-sne_test_train_aug" alt="t-SNE: test-train-aug 비교" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ aug 데이터를 포함했을 때, test와의 구분이 오히려 더 불명확해지고 aug 데이터가 별도로 군집화되는 현상이 나타남.</p>
+      </div>
+    </details>
+
+    <h3>📌 simulation-run 간의 이상치 후처리</h3>
+    <p><strong>- 관찰:</strong> 딥러닝 및 머신러닝 모델의 예측 결과를 t-SNE로 시각화한 결과, 일부 예측된 이상치가 train 데이터의 정상 군집 내부에 포함되어 있는 현상이 다수 확인되었습니다.</p>
+    <p><strong>- 문제:</strong> 이러한 유형의 이상치는 기존 이상 탐지 모델이 정상 데이터로 잘못 판단하는 경향이 있었으며, 그로 인해 예측 성능 저하가 발생했습니다.</p>
+    <p><strong>- 해결:</strong> test 데이터는 1 set에 50개의 run으로 구성되어 있다는 점에 착안해, 각 run 내 이상치가 일정 비율(예: 5%) 이상일 경우 해당 run 전체를 이상치로 판단하는 후처리 전략을 적용했습니다.</p>
+    <p><strong>- 결과:</strong> 후처리 전략 적용 이후, train 데이터 군집 내부에 숨겨져 있던 이상치도 효과적으로 탐지되었고, 전체적인 예측 정확도도 눈에 띄게 향상되었습니다.</p>
+    <p><strong>- 인사이트:</strong> 개별 샘플 단위보다 시뮬레이션 단위(run 단위)로 판단하는 방식이 실제 산업 환경에서의 이상 탐지에 보다 적합하며, t-SNE와 같은 시각화 기법이 탐지 실패의 원인을 파악하는 데 매우 유용하다는 점을 확인했습니다.</p>
+
+    <details style="margin-top: 15px;">
+      <summary style="cursor: pointer; color: #0a9396; font-weight: bold;">📊 AutoEncoder 시각화 결과 미리보기</summary>
+      <div style="margin-top: 10px;">
+        <iframe 
+          src="../images/07_Chemical_process_anomaly_detection/autoencoder.html" 
+          width="100%" 
+          height="400" 
+          style="border: 1px solid #ccc; border-radius: 8px;"
+          loading="lazy">
+        </iframe>
+        <p style="font-size: 0.9em; color: #555; text-align: center; margin-top: 8px;">
+          ▲ t-SNE 시각화 결과: 일부 예측된 이상치가 정상 train 데이터 군집 내부에 포함되어 있는 모습
+        </p>
+        <div style="text-align: center; margin-top: 10px;">
+          <a href="../images/07_Chemical_process_anomaly_detection/autoencoder.html" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #0a9396; color: white; text-decoration: none; border-radius: 5px;">
+            🔍 전체 화면으로 보기
+          </a>
+        </div>
+      </div>
+    </details>
+
   </div>
-
   <div class="section">
     <h2>🌟 팀 성과</h2>
     <ul>
-      <li>✔ 다양한 이상 탐지 모델 비교 및 평가 체계 확립</li>
-      <li>✔ 후처리 적용을 통해 평가 지표(F1-score 등) 안정성 확보</li>
-      <li>✔ 발표자료를 통해 각 모델의 장단점과 적용 시나리오 명확화</li>
+      <li>✔ 다양한 이상 탐지 모델 비교 및 성능 분석 체계 수립</li>
+      <li>✔ 후처리 적용으로 평가 지표(F1-score 등)의 안정성 향상</li>
+      <li>🏆 최종 리더보드 <strong>1위 달성</strong> (F1-score 기반 평가)</li>
     </ul>
+    <div style="text-align: center; margin-top: 10px;">
+      <img src="../images/07_Chemical_process_anomaly_detection/Final_score.png" alt="최종 리더보드 결과" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;" />
+      <p style="font-size: 0.9em; color: #555;">▲ 최종 리더보드 결과: F1-score 기준 1위 기록</p>
+    </div>
   </div>
+
 
   <div class="section">
     <h2>💡 깨달은 점</h2>
-    <p>단순히 모델 성능만을 높이기보다, 도메인 구조와 데이터 특성을 반영한 후처리 및 변수 선택이 실제 성능에 더 큰 영향을 줄 수 있음을 경험했습니다. 또한 wandb를 활용한 실험 로그 추적의 중요성을 체감했습니다.</p>
+    <p>
+      이번 프로젝트를 통해 단순히 모델 성능을 높이는 것보다 <strong>데이터의 특성과 도메인 구조를 이해하고 반영하는 전략</strong>이 훨씬 더 큰 영향을 미칠 수 있다는 사실을 체감했습니다. 특히, 전체적인 데이터 분포와 상관관계를 고려한 feature selection, 그리고 시뮬레이션 단위의 후처리는 실제 산업 환경에서도 응용 가능한 방식이었습니다.
+    </p>
+    <p>
+      또한 프로젝트 도중 가장 인상 깊었던 점 중 하나는 <strong>train 데이터 분포 내부에서 발생하는 이상치</strong>의 존재였습니다. 이러한 미세 이상치는 정상 데이터와 거의 유사한 특성을 가지지만 실제로는 시스템 이상을 나타내는 경우로, <strong>기존 이상 탐지 모델이 이를 정상으로 오인할 위험이 크며</strong>, 탐지 성능을 저하시킬 수 있다는 점에서 매우 까다로운 문제였습니다.
+    </p>
+    <p>
+      이 문제를 해결하기 위해 적용한 <strong>run 단위 후처리 전략</strong>은 샘플 단위로는 포착되지 않던 이상치를 보완하고, 실제 운영 시나리오에 더 적합한 탐지 결과를 만들어낼 수 있다는 중요한 인사이트를 제공했습니다.
+    </p>
+    <p>
+      마지막으로 <strong>wandb를 활용한 실험 기록 및 시각화</strong>는 프로젝트 효율성과 가시성을 크게 높여주었으며, 향후 다양한 프로젝트에서도 반복 활용하고 싶은 유용한 도구임을 느꼈습니다. 단순한 성능 수치 이상으로, 데이터 해석과 실험 설계에 대한 깊이 있는 고민이 필요함을 다시금 실감한 경험이었습니다.
+    </p>
   </div>
 
   <div class="section">
@@ -151,5 +237,4 @@
   </div>
 
 </body>
-
 </html>

@@ -106,7 +106,16 @@
       <li>✔ 관련 문서 검색 및 프롬프트 구성 → LLM을 통한 답변 생성</li>
       <li>✔ 출처 문서 정보 표시 및 Streamlit 기반 UI 제공</li>
     </ul>
+
+    <details style="margin-top: 10px;">
+      <summary style="cursor:pointer; color:#0a9396;">📊 시스템 워크플로우 보기</summary>
+      <div style="text-align: center; margin-top: 10px;">
+        <img src="../images/06_Science_Question_Answering/workflow.png" alt="RAG 시스템 워크플로우" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ RAG 기반 시스템 전체 흐름도</p>
+      </div>
+    </details>
   </div>
+
 
   <div class="section">
     <h2>🧑‍💻 내가 기여한 부분</h2>
@@ -116,6 +125,14 @@
       <li>✔ LangChain PromptTemplate 설계 및 Solar API 연동</li>
       <li>✔ 사용자 질의 흐름을 고려한 프론트엔드 구조 설계 (Streamlit)</li>
     </ul>
+
+    <details style="margin-top: 10px;">
+      <summary style="cursor:pointer; color:#0a9396;">📄 사용한 과학 지식 문서 구조 보기</summary>
+      <div style="text-align: center; margin-top: 10px;">
+        <img src="../images/06_Science_Question_Answering/data.png" alt="과학 문서 JSONL 예시" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #555;">▲ 과학 지식 문서 구조 예시 (JSONL)</p>
+      </div>
+    </details>
   </div>
 
   <div class="section">
@@ -129,18 +146,33 @@
     <p><strong>- 해결 방법:</strong> 검색된 문서의 제목/본문 유사도를 추가 필터로 검토해 상위 3개만 노출하고, 필요 시 검색 결과가 없음을 안내하는 예외 응답 구현.</p>
   </div>
 
-  <div class="section">
-    <h2>🌟 팀 성과</h2>
-    <ul>
-      <li>✔ 실제 질문-응답 흐름을 자연스럽게 연결한 UX 구조 완성</li>
-      <li>✔ MAP 0.89 / MRR 0.89 기록으로 <strong>대회 1위</strong> 달성</li>
-      <li>✔ 프롬프트 구성 및 검색 전략 개선으로 응답 일관성과 정확도 향상</li>
-    </ul>
+<div class="section">
+  <h2>🌟 팀 성과 및 생성 결과 예시</h2>
+  <ul>
+    <li>✔ 실제 질문-응답 흐름을 자연스럽게 연결한 UX 구조 완성</li>
+    <li>✔ MAP 0.89 / MRR 0.89 기록으로 <strong>대회 1위</strong> 달성</li>
+    <li>✔ 프롬프트 구성 및 검색 전략 개선으로 응답 일관성과 정확도 향상</li>
+  </ul>
+  <div style="text-align: center; margin-top: 10px;">
+    <img src="../images/06_Science_Question_Answering/Final_score.png" alt="최종 결과" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+    <p style="font-size: 0.9em; color: #555;">▲ 대회 최종 점수 및 순위</p>
   </div>
+
+  <p style="margin-top: 20px;">질문에 대해 검색된 문서를 기반으로 생성된 답변 예시는 다음과 같습니다. 출처 문서와 함께 결과를 사용자에게 전달합니다.</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <img src="../images/06_Science_Question_Answering/Demo.png" alt="생성 응답 예시" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+    <p style="font-size: 0.9em; color: #555;">▲ 검색 문서 기반으로 생성된 응답 예시</p>
+  </div>
+</div>
+
 
   <div class="section">
     <h2>💡 깨달은 점</h2>
-    <p>단순히 모델 성능이 아니라, 질문에 알맞은 문서를 얼마나 잘 찾고, 그 문서를 바탕으로 얼마나 자연스럽게 답변을 만들어내는지가 중요한 프로젝트였습니다. RAG 시스템의 핵심은 LLM이 아니라 전체 정보 흐름에 있음을 체감하며, 질문 필터링, 문서 전처리, 프롬프트 설계 등 비모델 영역의 중요성을 깊이 이해하게 되었습니다.</p>
+    <p>이번 프로젝트를 통해 단순히 모델의 성능보다도, 질문에 적합한 문서를 얼마나 정확히 검색하고, 이를 바탕으로 자연스럽고 신뢰 가능한 응답을 생성하는 <strong>전체 정보 흐름의 설계</strong>가 더욱 중요하다는 것을 깨달았습니다. 특히 RAG 시스템에서 핵심은 LLM 자체가 아니라, 질문 분류 → 문서 검색 → 응답 생성으로 이어지는 파이프라인 전반의 구조였습니다.</p>
+
+    <p>또한, <strong>Streamlit을 활용한 사용자 인터페이스 구현 경험</strong>은 프론트엔드 시각화의 중요성을 체감하는 계기가 되었습니다. 결과와 출처 문서를 직관적으로 연결해 보여주는 UI 설계가 부족했던 점은 이후 개선 과제로 남았으며, 사용자 경험을 고려한 정보 표현 방식에 대해 고민해보는 기회가 되었습니다.</p>
+
+    <p>마지막으로, 생성된 응답의 품질을 정량적으로 평가하기 위한 지표(MAP, MRR)가 유용했지만, 그 한계도 분명했습니다. 특히 사용자 관점에서 '좋은 응답'이 무엇인지에 대한 기준은 정성적 피드백 없이는 포착하기 어렵다는 점에서, <strong>정량과 정성 평가를 함께 고려한 테스트 설계</strong>의 중요성을 느꼈습니다.</p>
   </div>
 
   <div class="section">
