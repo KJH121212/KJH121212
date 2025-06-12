@@ -1,0 +1,174 @@
+/* 전체 배경 및 기본 폰트 */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* 헤더 */
+header {
+    background-color: #005f73;
+    color: white;
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+header img {
+    width: 130px;
+    border-radius: 100px;
+    border: 3px solid white;
+    margin-bottom: 10px;
+}
+
+/* 섹션 공통 */
+section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+h2 {
+    color: #0a9396;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* 리스트 */
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 10px;
+}
+
+/* 테이블 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* 링크 */
+a {
+    color: #0a9396;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* 프로젝트 summary 버튼 스타일 */
+details summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #0a9396;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+details summary::before {
+    content: '▶';
+    margin-right: 8px;
+    transition: transform 0.2s ease;
+}
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+summary .project-period {
+    margin-left: auto;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* 프로젝트 상세 내용 */
+details {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 18px 24px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+details:hover {
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+.project-detail ul {
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.project-detail ul li {
+    margin-bottom: 10px;
+}
+.project-detail img {
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* footer */
+footer {
+    text-align: center;
+    color: #888;
+    font-size: 0.9em;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+summary.project-toggle-button {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    font-weight: bold;
+    color: #0a9396;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.about-item {
+  flex: 1 1 300px;
+  margin: 12px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  text-align: center; /* 내용 가운데 정렬 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.about-item h3 {
+  margin-top: 0; /* 상단 여백 제거 */
+  background-color: #0a9396;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 1.05em;
+  text-align: center;
+}
+
+
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}

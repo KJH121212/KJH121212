@@ -4,253 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>김지후 | 머신러닝 엔지니어 포트폴리오</title>
-    <style>
-        /* 🔷 전체 기본 스타일 */
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f7f9fc;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        /* 🔷 헤더 스타일 */
-        header {
-            background-color: #005f73;
-            color: white;
-            text-align: center;
-            padding: 40px 20px 20px;
-        }
-
-        header img {
-            width: 130px;
-            border-radius: 100px;
-            border: 3px solid white;
-            margin-bottom: 10px;
-        }
-
-        /* 🔷 섹션 레이아웃 */
-        section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        h2 {
-            color: #0a9396;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-        }
-
-        /* 🔷 리스트 기본 스타일 */
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        /* 🔷 표 스타일 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        /* 🔷 링크 스타일 */
-        a {
-            color: #0a9396;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* 🔶 프로젝트 요약 summary */
-        details summary {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: bold;
-            color: #0a9396;
-            cursor: pointer;
-            margin-bottom: 5px;
-        }
-
-        details summary::before {
-            content: '▶';
-            margin-right: 8px;
-            transition: transform 0.2s ease;
-        }
-
-        details[open] summary::before {
-            transform: rotate(90deg);
-        }
-
-        summary .project-period {
-            margin-left: auto;
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        /* 🔶 프로젝트 상세 영역 */
-        ul.project-detail {
-            padding-left: 20px;
-            margin-top: 5px;
-            margin-bottom: 20px;
-        }
-
-        ul.project-detail li {
-            margin-bottom: 6px;
-        }
-
-        ul.project-sublist {
-            padding-left: 20px;
-            list-style-type: disc;
-            margin-top: 4px;
-            margin-bottom: 10px;
-        }
-
-        ul.project-sublist li {
-            margin-bottom: 4px;
-        }
-
-        /* 🔶 프로젝트 전체 카드 스타일 추가 */
-        details {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            padding: 18px 24px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-            transition: box-shadow 0.2s ease;
-        }
-
-        details:hover {
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 🔷 Education 섹션 */
-        .education-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .education-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #ddd;
-            padding: 8px 0;
-        }
-
-        .education-degree {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .education-period {
-            font-size: 0.9em;
-            color: #666;
-            white-space: nowrap;
-        }
-
-        /* 🔷 Certification 섹션 */
-        .certification-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .certification-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #ddd;
-            padding: 8px 0;
-        }
-
-        .certification-name {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .certification-date {
-            font-size: 0.9em;
-            color: #666;
-            white-space: nowrap;
-        }
-
-        /* 🔷 Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #888;
-            margin-top: 40px;
-        }
-
-        /* 🔷 기타 유틸 클래스 */
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-        @media (max-width: 768px) {
-            body {
-                font-size: 0.95em;
-                padding: 0 10px;
-            }
-
-            header {
-                padding: 20px 10px 10px;
-            }
-
-            header img {
-                width: 100px;
-            }
-
-            h1 {
-                font-size: 1.2em;
-            }
-
-            .project-header,
-            .education-item,
-            .certification-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-            }
-
-            table, th, td {
-                font-size: 0.85em;
-                word-break: break-word;
-            }
-
-            table {
-                display: block;
-                overflow-x: auto;
-            }
-
-            .project-period {
-                font-size: 0.8em;
-            }
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -260,301 +14,333 @@
         <p>숫자 너머의 의미를 찾고, 문제의 본질을 고민합니다.</p>
     </header>
 
-
-
-    <section>
-        <h2>🎓 Education</h2>
-        <ul class="education-list">
-            <li class="education-item">
-                <span class="education-degree">
-                    경희대학교 국제캠퍼스 생체의공학부 학사 졸업<br>
-                    <span style="font-size: 0.9em; color: #777;">GPA 3.4 / 4.3</span>
-                </span>
-                <span class="education-period">2018.03 ~ 2024.02</span>
-            </li>
-
-            <li class="education-item">
-                <span class="education-degree">Upstage AI Lab 부트캠프 수료</span>
-                <span class="education-period">2024.11 ~ 2025.06</span>
-            </li>
+    <section id="about">
+    <h2>👋 About Me</h2>
+    <div class="about-grid">
+        <div class="about-item">
+        <h3>👤 한 줄 소개</h3>
+        <p><strong>“AI에서 가장 중요한 것은 데이터다.”</strong> 이 신념을 바탕으로, 수집·정제·분석 전 과정을 이해하고 설계할 수 있는 엔지니어를 지향합니다.</p>
+        </div>
+        <div class="about-item">
+        <h3>📬 연락처</h3>
+        <ul>
+            <li>Email: <a href="mailto:jihu6033@gmail.com">jihu6033@gmail.com</a></li>
+            <li>Phone: 010-3389-8271</li>
+            <li>GitHub: <a href="https://github.com/KJH121212" target="_blank">github.com/KJH121212</a></li>
         </ul>
+        </div>
+        <div class="about-item">
+        <h3>📜 자격증</h3>
+        <ul>
+            <li>운전면허 1종보통 (2018.02)</li>
+            <li>TOEIC Speaking IM3 (2025.04)</li>
+        </ul>
+        </div>
+        <div class="about-item">
+        <h3>🎓 학력 및 활동</h3>
+        <ul>
+            <li>경희대학교 생체의공학부 졸업 (2018.03 ~ 2024.02)</li>
+            <li>Upstage AI Lab 부트캠프 수료 (2024.11 ~ 2025.06)</li>
+        </ul>
+        </div>
+    </div>
     </section>
+
 
     <section>
         <h2>🧰 Skills</h2>
         <table>
-            <tr><th>카테고리</th><th>기술</th><th>경험</th></tr>
-            <tr>
-                <td>프로그래밍 언어</td>
-                <td>Python, C++, MATLAB</td>
-                <td>LSTM 기반 코로나 예측 (졸업논문)<br>Upstage AI Lab 부트캠프 (ML/CV/NLP)</td>
-            </tr>
-            <tr>
-                <td>프레임워크 / 라이브러리</td>
-                <td>PyTorch, TensorFlow, Scikit-learn, Wandb</td>
-                <td>딥러닝 모델 구현 및 실험 추적</td>
-            </tr>
-            <tr>
-                <td>개발 환경</td>
-                <td>Visual Studio Code, Jupyter Notebook</td>
-                <td>프로젝트 설계 및 분석 실험</td>
-            </tr>
-            <tr>
-                <td>협업 도구</td>
-                <td>Git, GitHub, Notion, Slack</td>
-                <td>팀 프로젝트 버전 관리 및 문서 협업</td>
-            </tr>
+            <thead>
+                <tr style="background-color: #e0f2f1;">
+                    <th style="width: 18%;">카테고리</th>
+                    <th style="width: 20%;">기술</th>
+                    <th style="width: 12%;">숙련도</th>
+                    <th>활용 경험</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2"><strong>프로그래밍 언어</strong></td>
+                    <td><strong>Python</strong></td>
+                    <td>★★★★☆</td>
+                    <td><em>ML, DL 프로젝트 전반에서 중심 언어로 활용</em></td>
+                </tr>
+                <tr>
+                    <td><strong>C++</strong></td>
+                    <td>★★☆☆☆</td>
+                    <td>자료구조, 포인터 개념 등 기초 알고리즘 실습 중심</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="5"><strong>프레임워크<br>/ 라이브러리</strong></td>
+                    <td><strong>PyTorch</strong></td>
+                    <td>★★★★☆</td>
+                    <td>문서 분류, 이상 탐지 등에서 CNN/AutoEncoder 기반 모델 개발</td>
+                </tr>
+                <tr>
+                    <td><strong>TensorFlow</strong></td>
+                    <td>★★★☆☆</td>
+                    <td>LSTM 기반 시계열 예측 모델 구현 등 일부 프로젝트 적용</td>
+                </tr>
+                <tr>
+                    <td><strong>Wandb</strong></td>
+                    <td>★★★★☆</td>
+                    <td>실험 자동화 및 시각화, sweep 기능으로 실험 비교 및 기록</td>
+                </tr>
+                <tr>
+                    <td><strong>LangChain</strong></td>
+                    <td>★★☆☆☆</td>
+                    <td>RAG 시스템 구현 시 프롬프트 구성 및 문서 검색 파이프라인 설계</td>
+                </tr>
+                <tr>
+                    <td><strong>Huggingface</strong></td>
+                    <td>★★★☆☆</td>
+                    <td>KoBART 기반 한국어 요약 모델 파이프라인 구현 및 실험</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2"><strong>협업 도구</strong></td>
+                    <td><strong>Git / GitHub</strong></td>
+                    <td>★★★★☆</td>
+                    <td>Gitflow 전략 기반 팀 프로젝트 코드 버전 관리 및 협업</td>
+                </tr>
+                <tr>
+                    <td><strong>Notion / Slack</strong></td>
+                    <td>★★★★☆</td>
+                    <td>프로젝트 일정 관리, 실험 기록 및 팀 커뮤니케이션 도구로 활용</td>
+                </tr>
+            </tbody>
         </table>
     </section>
 
-
     <section>
         <h2>💼 Projects</h2>
-        <ul>
+        <details class="project-box">
+        <summary class="project-toggle-button">📄 정부 문서 이미지 분류 ( Computer Vision / Object Detection )</summary>
+        <div class="project-detail">
+            <p><strong>📅 기간:</strong> 2025.02.14 ~ 2025.02.25</p>
+            <p><strong>🧑‍💻 역할:</strong> 데이터 증강 및 sinogram 기반 실험 주도</p>
+
+            <p><strong>🛠️ 주요 업무:</strong></p>
+            <ul>
+                <li>
+                    Augraphy/Albumentations 등 이미지 증강 적용<br>
+                    <img src="./images/03_Document_Type_Classification/augmentation4.png" alt="이미지 증강 예시" width="300">
+                </li>
+                <li>
+                    ResNet, EfficientNet, SwinTransformer 등 모델 성능 비교 실험<br>
+                    <img src="./images/03_Document_Type_Classification/model.png" alt="모델별 성능 비교" width="300">
+                </li>
+                <li>
+                    문서 이미지를 Radon Transform하여 Sinogram 처리<br>
+                    <img src="./images/03_Document_Type_Classification/sinogram.png" alt="Sinogram 예시" width="300">
+                </li>
+                <li>
+                    YOLO 기반 텍스트 탐지 후 분류 모델에 연동<br>
+                    <img src="./images/03_Document_Type_Classification/YOLO.png" alt="YOLO 기반 텍스트 탐지" width="300">
+                </li>
+            </ul>
+            <p><strong>✅ 주요 성과:</strong></p>
+            <ul>
+                <li>Sinogram 실험으로 전처리 전략의 가능성 도출</li>
+                <li>YOLO 기반 전략으로 특정 클래스 성능 향상</li>
+                <li>
+                    최종 리더보드 1위 달성 (F1 score: 0.7429 → 0.9791)<br>
+                    <img src="./images/03_Document_Type_Classification/FINAL_Score.png" alt="최종 리더보드" width="800">
+                </li>
+            </ul>
+
+            <a href="./projects/03_Document_Type_Classification.html" target="_blank">🔗 전체 상세 페이지 보기</a>
+            <a href="./projects/01_LSTM_Covid_prediction.pdf" target="_blank">💻 GitHub 저장소</a>
+        </div>
+        </details>
+
+        <details class="project-box">
+        <summary class="project-toggle-button">📄 정부 지원금 추천 챗봇 ( LLM / RAG )</summary>
+        <div class="project-detail">
+            <p><strong>📅 기간:</strong> 2025.03.26 ~ 2025.04.08</p>
+            <p><strong>🧑‍💻 역할:</strong> 파이프라인 설계 및 RAG 시스템 구현</p>
+
+            <p><strong>🛠️ 주요 업무:</strong></p>
+            <ul>
+                <li>정부24 기반 공공서비스 데이터 수집 및 JSON 통합 처리</li>
+                <li>중복 제거 및 변경 추적 로직으로 임베딩 최적화</li>
+                <li>LangChain + Solar API 조합으로 RAG 흐름 구성</li>
+                <li>Streamlit 기반 검색 인터페이스 구현<br>
+                    <img src="./images/05_Smart_Subsidy_Finder/service_demo1.png" alt="검색 인터페이스 1" width="300">
+                </li>
+            </ul>
+
+            <p><strong>✅ 주요 성과:</strong></p>
+            <ul>
+                <li>
+                    전체 임베딩 수 약 26,000건 → 8,800건으로 축소하여 비용 절감<br>
+                    <img src="./images/05_Smart_Subsidy_Finder/EDA1.png" alt="임베딩 수 축소" width="300">
+                </li>
+                <li>조건 기반 문서 필터링과 프롬프트 품질 개선으로 추천 정확도 향상</li>
+                <li>
+                    실제 정부 데이터를 활용한 맞춤형 추천 챗봇 프로토타입 구현<br>
+                    <img src="./images/05_Smart_Subsidy_Finder/service_demo2.png" alt="검색 인터페이스 2" width="300">
+                </li>
+            </ul>
+
+            <a href="./projects/05_Smart_Subsidy_Finder.html" target="_blank">🔗 전체 상세 페이지 보기</a>
+        </div>
+        </details>
+
+        <details class="project-box">
+        <summary class="project-toggle-button">📄 화학 공정 이상 탐지 프로젝트 ( ML )</summary>
+        <div class="project-detail">
+            <p><strong>📅 기간:</strong> 2025.04.23 ~ 2025.05.06</p>
+            <p><strong>🧑‍💻 역할:</strong> 데이터 처리 파이프라인 설계 및 이상 탐지 전략 개발</p>
+
+            <p><strong>🛠️ 주요 업무:</strong></p>
+            <ul>
+            <li>센서 및 제어 변수 기반 이상 탐지 모델 설계 및 비교 (IF, OCSVM, AutoEncoder 등)</li>
             <li>
-                <details>
-                    <summary>
-                        졸업작품 - 코로나 확진자 예측
-                        <span class="project-period">2023.09.01 ~ 2023.12.01</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> LSTM(Long Short-Term Memory) 모델을 활용해 코로나 확진자 수를 예측하고, 외부 변수 및 해외 데이터를 적용하여 모델 성능 개선 가능성을 탐색한 학사 졸업 논문 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, TensorFlow, Pandas, Matplotlib</li>
-                        <li><strong>🤖 사용 모델:</strong> LSTM</li>
-                        <li><strong>💡 주요 시도:</strong>
-                            <ul class="project-sublist">
-                                <li>✔ <strong>외부 변수 추가:</strong> 사회적 거리두기 단계 및 평균 기온 변수 도입</li>
-                                <li>✔ <strong>데이터 다변화:</strong> 일본·러시아 확진자 데이터 병합 실험</li>
-                            </ul>
-                        </li>
-                        <li><strong>🏆 성과:</strong> 외부 변수 도입 시 모델 성능 향상 확인, 해외 데이터 도입은 오히려 성능 저하</li>
-                        <li><strong>🔗 상세링크:<a href="./projects/01_LSTM_Covid_prediction.html" target="_blank">졸업논문 프로젝트 페이지</a></strong> 
-                        </li>
-                    </ul>
-                </details>
+                t-SNE 시각화를 통해 train/test 데이터 분포 차이 분석<br>
+               <img src="./images/07_Chemical_process_anomaly_detection/t-sne_test-train" alt="t-SNE 시각화" width="300">
             </li>
             <li>
-                <details>
-                    <summary>
-                        아파트 실거래가 예측 - ML 5조 프로젝트
-                        <span class="project-period">2024.12.23 ~ 2025.01.07</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> 서울시 아파트 실거래 데이터를 기반으로 다양한 모델을 실험하여 아파트 매매가를 예측하는 팀 프로젝트입니다. 부동산 시장의 특성을 반영한 피처 엔지니어링과 회귀 모델링 기법을 통해 예측 성능을 향상시키고자 했습니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 회귀 모델 구현, 피처 엔지니어링 기획 및 적용, 하이퍼파라미터 튜닝</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, Scikit-learn, Pandas, Seaborn, Matplotlib</li>
-                        <li><strong>🤖 사용 모델:</strong> LightGBM, XGBoost, CatBoost, TabNet</li>
-                        <li><strong>💡 주요 시도:</strong>
-                            <ul class="project-sublist">
-                                <li>✔ <strong>파생 변수 설계:</strong> 건축연도 기반 신축 여부, 강남/강북 여부 생성</li>
-                                <li>✔ <strong>결측치 처리:</strong> 범주형은 'NULL'로 치환, 연속형은 선형 보간</li>
-                                <li>✔ <strong>거리 기반 피처:</strong> 지하철/버스 정류장 거리 활용</li>
-                                <li>✔ <strong>정규화:</strong> 로그 변환 및 계약년·계약월 분리</li>
-                            </ul>
-                        </li>
-                        <li><strong>🏆 성과:</strong> 최종 모델 RMSE 11628.77 기록, 대회 최종 순위 2위 달성<br>
-                            <img src="./images/02_House_Price_prediction/House_Price_Prediction.png" alt="House_Price_Result_Image" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
-                        </li>
-                        <li><strong>🔗 상세링크:</strong> 
-                            <a href="./projects/02_House_Price_prediction.html" target="_blank">프로젝트 소개 상세 페이지</a>
-                        </li>
-                    </ul>
-                </details>
+                실제 이상 분포 유사 데이터 증강 실험 → 왜곡 발생으로 폐기<br>
+                <img src="./images/07_Chemical_process_anomaly_detection/t-sne_test_train_aug" alt="데이터 증강 예시" width="300">
             </li>
+            <li>run 단위 이상 판단 후처리 전략 설계 (5% 이상 이상 샘플 존재 시 run 전체 이상 처리)</li>
+            </ul>
+
+            <p><strong>✅ 주요 성과:</strong></p>
+            <ul>
+            <li>데이터 증강 한계를 인식하고 후처리 전략으로 전환해 성능 안정화</li>
+            <li>t-SNE 시각화를 통해 탐지 실패 원인을 정량/정성 분석</li>
             <li>
-                <details>
-                    <summary>
-                        문서 이미지 분류 - 오합지존 IDLE 팀 프로젝트
-                        <span class="project-period">2025.02.14 ~ 2025.02.25</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> 금융, 의료, 보험 등 산업 전반의 문서를 이미지 기반으로 분류하는 문서 타입 분류 대회에 참가하여, 다양한 이미지 증강과 앙상블 모델을 활용해 고성능 모델을 개발한 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> Sinogram 기반 실험 설계 및 테스트, 회전·노이즈 이미지 대응 전략 수립</li>
-                        <li><strong>🛠️ 기술 스택:</strong>  Python, PyTorch (with torchvision), Albumentations, Augraphy, Jupyter Notebook, Pandas, Wandb</li>
-                        <li><strong>🤖 사용 모델:</strong> ResNet, EfficientNet-B3, SwinTransformer-T, YOLOv12</li>
-                        <li><strong>💡 주요 시도:</strong>
-                            <ul class="project-sublist">
-                                <li>✔ <strong>이미지 증강:</strong> Mixup, Cutmix, 마스킹, 노이즈, 회전 등 적용</li>
-                                <li>✔ <strong>Sinogram 실험:</strong> 비정형 문서 패턴 대응을 위한 구조 설계</li>
-                                <li>✔ <strong>YOLO 기반 객체 탐지:</strong> 타이틀 탐지 후 분류 연동 전략 실험</li>
-                                <li>✔ <strong>다단계 앙상블:</strong> ResNet + EfficientNet + YOLOv12 조합</li>
-                            </ul>
-                        </li>
-                        <li><strong>🏆 성과:</strong> 다단계 앙상블 및 객체 탐지 기반 재분류 전략으로 최종 리더보드 1위 달성
-                            <img src="./images/03_Document_Type_Classification/FINAL_Score.png" alt="Document_Type_Classification_Result_Image" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
-                        </li>
-                        <li><strong>🔗 상세링크:</strong> 
-                            <a href="./projects/03_Document_Type_Classification.html" target="_blank">프로젝트 소개 상세 페이지</a>
-                        </li>
-                    </ul>
-                </details>
+                최종 리더보드 1위 달성 <br>
+                (F1 score: 0.4836 → 0.9520, accuracy: 0.3189->0.9703)<br>
+                <img src="./images/07_Chemical_process_anomaly_detection/Final_score.png" alt="최종 리더보드" width="800">
             </li>
+            </ul>
+            <a href="./projects/07_Chemical_process_anomaly_detection.html" target="_blank">🔗 전체 상세 페이지 보기</a>
+        </div>
+        </details>
+
+        <details class="project-box">
+        <summary class="project-toggle-button">📄 졸업논문 - 코로나 확진자 예측 ( LSTM )</summary>
+        <div class="project-detail">
+            <p><strong>📅 기간:</strong> 2023.09.01 ~ 2023.12.01</p>
+            <p><strong>🧑‍💻 역할:</strong> 전체 실험 설계 및 데이터 수집, 전처리, 모델 구현 및 평가</p>
+
+            <p><strong>🛠️ 주요 업무:</strong></p>
+            <ul>
+            <li>한국, 일본, 러시아의 코로나 확진자 수 및 거리두기, 기온 등의 외부 변수 수집</li>
+            <li>LSTM 모델 기반의 시계열 예측 구조 설계 (단일/다중 입력 실험)</li>
+            <li>시계열 데이터 정제, 결측치 처리, 변수 정규화 및 학습용 구조로 전환</li>
+            <li>MAE 기반 성능 평가 및 오차 원인 분석 수행</li>
+            </ul>
+
+            <p><strong>✅ 주요 성과:</strong></p>
+            <ul>
+            <li>거리두기 변수를 추가했을 때 모델 성능 유의미하게 향상</li>
+            <li>해외 확진자 데이터 병합은 성능 저하를 유발함을 확인</li>
+            <li>단순 변수 추가보다 변수 간 관계 분석의 중요성 인식</li>
+            </ul>
+
+            <a href="./projects/01_LSTM_Covid_prediction.html" target="_blank">🔗 전체 상세 페이지 보기</a>
+            <a href="./projects/01_LSTM_Covid_prediction.pdf" target="_blank">📄 논문 PDF 보기</a>
+        </div>
+        </details>
+
+
+        <details class="project-box">
+        <summary class="project-toggle-button">📄 일상 대화 요약 시스템 ( NLP ) </summary>
+        <div class="project-detail">
+            <p><strong>📅 기간:</strong> 2025.03.12 ~ 2025.03.24</p>
+            <p><strong>🧑‍💻 역할:</strong> 모델 학습 및 실험 설계, 정량/정성 평가 수행</p>
+
+            <p><strong>🛠️ 주요 업무:</strong></p>
+            <ul>
+            <li>일상 대화 데이터를 기반으로 핵심 내용 추출 모델 설계</li>
+            <li>Rouge-1, Rouge-2, Rouge-L 등 다양한 정량 평가 지표 적용</li>
+            <li>KoBART, GPT-4o, SOLAR Pro 등 다양한 요약 모델 비교 실험</li>
+            <li>Token overflow 방지를 위한 tokenizer 설정 및 전처리</li>
+            </ul>
+
+            <p><strong>✅ 주요 성과:</strong></p>
+            <ul>
+            <li>Rouge 지표만으로는 요약 품질 판단이 어려움을 인식</li>
+            <li>정성 평가를 통해 정보 보존 및 문체 일관성 기준 확보</li>
+            <li>모델별 문장 구조 차이를 분석하여 전략적 모델 선택 수행</li>
             <li>
-                <details>
-                    <summary>
-                        일상 대화 요약 시스템 - Upstage NLP 대회
-                        <span class="project-period">2025.03.12 ~ 2025.03.24</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> 다양한 일상 대화(회의, 상담, 여가 등)를 요약하는 NLP 경진대회에 참가하여, 비정형 텍스트 데이터를 기반으로 핵심 내용을 추출하는 요약 모델을 설계하고 실험한 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 다양한 한국어 요약 모델 실험</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, PyTorch, Huggingface Transformers, Rouge</li>
-                        <li><strong>🤖 사용 모델:</strong> KoBART, SOLAR Pro, Gemma, OpenAI, GPT-4o</li>
-                        <li><strong>💡 주요 시도:</strong>
-                            <ul class="project-sublist">
-                                <li>✔ <strong>한국어 특화 모델 실험:</strong> KoBART, SOLAR Pro 등 다양한 사전학습 모델 적용</li>
-                                <li>✔ <strong>발화자 분리 및 필터링:</strong> 대화 구조에 따른 발화자 구분과 길이 기반 전처리</li>
-                            </ul>
-                        </li>
-                        <li><strong>🏆 성과:</strong> 다양한 사전학습 모델 비교 및 커스터마이징을 통해 현실적인 요약 스타일 확보, 요약 비율 및 정밀도 기준으로 안정적인 성능 달성</li>
-                            <img src="./images/04_Dialogue_Summarization/Final_score.png" alt="Dialogue_Summarization_Image" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
-                        <li><strong>🔗 상세링크:</strong> 
-                            <a href="./projects/04_Dialogue_Summarization.html" target="_blank">프로젝트 상세 내용</a>
-                        </li>
-                    </ul>
-                </details>
+                리더보드 최종 3위 달성<br>
+                (rouge1: 0.4840-> 0.5751, rouge2: 0.3179->0.3805, rougeL: 0.3997->0.4954)<br>
+                <img src="./images/04_Dialogue_Summarization/Final_score.png" alt="최종 리더보드" width="800">
             </li>
+            </ul>
+
+            <a href="./projects/04_Dialogue_Summarization.html" target="_blank">🔗 전체 상세 페이지 보기</a>
+        </div>
+        </details>
+
+        <details class="project-box">
+        <summary class="project-toggle-button">📄 과학 지식 RAG 기반 질의 응답 시스템 ( LLM / RAG ) </summary>
+        <div class="project-detail">
+            <p><strong>📅 기간:</strong> 2025.04.16 ~ 2025.04.21</p>
+            <p><strong>🧑‍💻 역할:</strong> 질문 분류 및 검색 흐름 설계, 프롬프트 및 응답 구조 설계</p>
+
+            <p><strong>🛠️ 주요 업무:</strong></p>
+            <ul>
+            <li>FAISS 기반 벡터 검색 시스템 구축 및 문서 색인</li>
+            <li>질문 도메인 분류기 구현 및 예외 처리를 위한 rule 기반 흐름 분기 설계</li>
+            <li>LangChain PromptTemplate 구성 및 Solar API 연동</li>
             <li>
-                <details>
-                    <summary>
-                        정부지원금 추천 챗봇 - LangChain 3조
-                        <span class="project-period">2024.04.02 ~ 2024.04.08</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> 사용자 질문을 기반으로 적절한 정부지원 서비스를 추천하는 RAG 기반 챗봇 시스템을 설계 및 구현한 팀 프로젝트입니다. Solar API와 LangChain을 이용해 검색 및 생성 기능을 통합했습니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 전체 파이프라인 설계 및 구현 (문서 로딩, 인덱싱, 검색, 프롬프트 생성, 응답 출력 등)</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, LangChain, FAISS, Solar API, Streamlit</li>
-                        <li><strong>🤖 사용 모델:</strong> Solar-pro (Upstage)</li>
-                        <li><strong>💡 주요 시도:</strong></li>
-                            <ul class="project-sublist">
-                                <li>✔ <strong>데이터 수집:</strong> 정부 API 호출 및 웹 크롤링을 통해 공공 서비스 데이터를 확보하고, 이를 조건 기반 필터링 및 색인 구조에 맞게 전처리</li>
-                                <li>✔ <strong>RAG 검색 파이프라인 구현:</strong> 사용자 질문 기반 문서 검색 및 프롬프트 자동 생성</li>
-                                <li>✔ <strong>응답 생성:</strong> Solar API를 통한 자연스러운 한글 답변 출력</li>
-                                <li>✔ <strong>인터페이스 구현:</strong> Streamlit 기반 검색 인터페이스 제작</li>
-                            </ul>
-                        <li><strong>🏆 성과:</strong> 조건 기반 문서 추천 정확도 향상, 사용자 질의에 대한 맞춤형 응답 생성 성공</li>
-                            <img src="./images/05_Smart_Subsidy_Finder/service_demo1.png" alt="정부지원금 추천 챗봇 데모1" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
-                            <img src="./images/05_Smart_Subsidy_Finder/service_demo2.png" alt="정부지원금 추천 챗봇 데모2" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
-                        <li><strong>🔗 상세링크:</strong> 
-                            <a href="./projects/05_Smart_Subsidy_Finder.html" target="_blank">프로젝트 상세 내용</a>
-                        </li>
-                    </ul>
-                </details>
+                질문 의도 → 문서 검색 → 응답 생성의 자동화 파이프라인 구현 <br>
+                <img src="./images/06_Science_Question_Answering/Demo.png" alt="검색 인터페이스" width="300">
             </li>
+            </ul>
+
+            <p><strong>✅ 주요 성과:</strong></p>
+            <ul>
+            <li>질문 → 검색 → 응답 흐름의 UX 개선으로 자연스러운 시스템 구성</li>
+            <li>프롬프트 구성 및 검색 전략 개선으로 응답 일관성과 정확도 향상</li>
             <li>
-                <details>
-                    <summary>
-                        과학 지식 질의 응답 시스템 구축 - UP6 팀 프로젝트
-                        <span class="project-period">2025.04.16 ~ 2025.04.21</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> 과학 상식 문서 4,200여 개를 색인하고, 질문 의도 분류 → 문서 검색 → 응답 생성 흐름으로 구성된 RAG(Retrieval Augmented Generation) 시스템을 설계 및 구현한 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 질의 분류 로직 구현, 유사 문서 검색 파이프라인 개발, 응답 생성 흐름 구성</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, FAISS, LangChain, Streamlit</li>
-                        <li><strong>🤖 사용 모델:</strong> Solar-pro (Upstage)</li>
-                        <li><strong>💡 주요 시도:</strong></li>
-                            <ul class="project-sublist">
-                                <li>✔ <strong>도메인 분류:</strong> 질문 유형 분류를 통한 흐름 분기 및 최적 처리 전략 도입</li>
-                                <li>✔ <strong>문서 검색:</strong> FAISS를 활용한 유사 문서 검색</li>
-                                <li>✔ <strong>답변 생성:</strong> Solar API 기반 문서 기반 답변 생성 및 출처 포함</li>
-                            </ul>
-                        <li><strong>🏆 성과:</strong> 최종 MAP 및 MRR 0.8939로 <strong>대회 1위</strong> 달성<br>
-                            <img src="images/06_Science_Question_Answering/Final_score.png" alt="과학 질의응답 리더보드 결과" style="margin-top:10px; max-width:100%; border: 1px solid #ccc; border-radius: 6px;">
-                        </li>
-                        <li><strong>🔗 상세링크:</strong> 
-                            <a href="./projects/06_Science_Question_Answering.html" target="_blank">프로젝트 상세 내용</a>
-                        </li>
-                    </ul>
-                </details>
+                최종 리더보드 1위 달성<br>
+                (MAP: 0.3197 -> 0.8939, MRR: 0.3212 -> 0.8939)<br>
+                <img src="./images/06_Science_Question_Answering/Final_score.png" alt="최종 리더보드" width="800">
             </li>
+
+            </ul>
+
+            <a href="./projects/06_Science_Question_Answering.html" target="_blank">🔗 전체 상세 페이지 보기</a>
+        </div>
+        </details>
+
+        <details class="project-box">
+        <summary class="project-toggle-button">📄 플루언트 기업 연계 프로젝트 ( STT-TTS 연동 캐릭터 챗봇 )</summary>
+        <div class="project-detail">
+            <p><strong>📅 기간:</strong> 2025.05.08 ~ 2025.06.05</p>
+            <p><strong>🧑‍💻 역할:</strong> 캐릭터 프롬프트 엔지니어링 설계, 종족 요약 시스템 및 데이터 파이프라인 구현</p>
+
+            <p><strong>🛠️ 주요 업무:</strong></p>
+            <ul>
+            <li>MBTI/종족/사용자 입력을 조합한 캐릭터 프롬프트 자동 생성 파이프라인 설계</li>
+            <li>Fandom/Wikipedia에서 종족 정보 수집 → 요약 → Supabase 저장 구조 구현</li>
+            <li>캐릭터 말투 충돌 해결을 위한 우선순위 전략 수립 (종결어미/성격 분리)</li>
+            <li>LLM 기반 TTS/STT 흐름을 구성하여 음성 대화 인터랙션을 위한 기반 마련</li>
+            </ul>
+
+            <p><strong>✅ 주요 성과:</strong></p>
+            <ul>
+            <li>요약 자동화 및 지식 DB 연동을 통해 대화 응답 속도 및 캐릭터 일관성 향상</li>
+            <li>RAG 구조에 맞춘 실시간 캐릭터 생성/응답 파이프라인 단독 설계 및 구현</li>
             <li>
-                <details>
-                    <summary>
-                        화학 공정 이상 탐지 프로젝트
-                        <span class="project-period">2025.04.23 ~ 2025.05.06</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> 공정 데이터를 활용해 이상 징후를 탐지하는 머신러닝 기반 프로젝트입니다. 화학 공정 시뮬레이션 데이터를 활용해 정상/비정상을 구분하는 다양한 이상 탐지 모델을 적용하고 비교 평가하였습니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> EDA, 이상 탐지 모델 설계 및 성능 비교, wandb 기반 실험 관리 및 후처리 로직 구현</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, Scikit-learn, PyTorch, wandb, Pandas, Matplotlib</li>
-                        <li><strong>🤖 사용 모델:</strong> Isolation Forest, One-Class SVM, AutoEncoder, Deep SVDD</li>
-                        <li><strong>💡 주요 시도:</strong></li>
-                            <ul class="project-sublist">
-                                <li>✔ <strong>EDA 분석:</strong> t-SNE 기반 시각화 및 센서 상관관계 분석</li>
-                                <li>✔ <strong>전처리 전략:</strong> 상관계수 기반 필터링 및 feature redundancy 제거</li>
-                                <li>✔ <strong>모델 비교 실험:</strong> Isolation Forest, One-Class SVM, AutoEncoder, Deep SVDD</li>
-                                <li>✔ <strong>후처리 로직:</strong> simulationRun 단위 이상 판별 전략으로 성능 개선</li>
-                            </ul>
-                        <li><strong>🏆 성과:</strong> 다양한 모델의 성능 비교 및 후처리를 통해 최적화된 이상 탐지 파이프라인 설계 완료</li>
-                        <li><strong>🔗 상세링크:</strong>
-                            <a href="./projects/07_Chemical_process_anomaly_detection.html" target="_blank">프로젝트 상세 내용</a>
-                        </li>
-                    </ul>
-                </details>
+                캐릭터와 실시간 음성 상호작용 가능한 프로토타입 완성 (Unity 연동 기반)  <br>
+                <img src="./images/08_industry_partnership_project_fluentt/Final_result.png" alt="Unity 연동 데모 화면" width="300">
             </li>
-            <li>
-                <details>
-                    <summary>
-                        플루언트 기업 연계 프로젝트
-                        <span class="project-period">2025.05.08 ~ 2025.06.05</span>
-                    </summary>
-                    <ul class="project-detail">
-                        <li><strong>📌 개요:</strong> 실시간 음성 기반 캐릭터 챗봇 서비스 개발을 목표로, 사용자의 설정에 따라 페르소나를 생성하고 LiveKit 기반 TTS/STT 연동을 통해 몰입형 대화를 구현한 프로젝트입니다.</li>
-                        <li><strong>🧑‍💻 역할:</strong> 캐릭터 프롬프트 엔지니어링 전체 설계, 종족 기반 지식 요약 시스템 단독 구현, Supabase 기반 데이터 관리 구조 설계</li>
-                        <li><strong>🛠️ 기술 스택:</strong> Python, OpenAI API(GPT-4o, TTS), LiveKit, Supabase, Streamlit, Fandom/Wikipedia 크롤링</li>
-                        <li><strong>💡 주요 시도:</strong></li>
-                            <ul class="project-sublist">
-                                <li>✔ <strong>프롬프트 엔지니어링:</strong> 사용자 입력, MBTI, 종족 데이터를 조합하여 일관성 있는 캐릭터 프롬프트 자동 생성</li>
-                                <li>✔ <strong>종족 요약 파이프라인:</strong> 위키/Fandom에서 종족 정보를 실시간 수집 → GPT 요약 → Supabase 저장 및 재사용</li>
-                                <li>✔ <strong>캐릭터 말투 충돌 해결:</strong> 사용자 입력 우선, 종족 종결어미 보완, MBTI는 성격 중심 분리 설계</li>
-                                <li>✔ <strong>Unity 연동 음성 데모:</strong> STT→LLM→TTS 흐름을 통해 가상 캐릭터와 대화하는 듯한 인터랙션 구현</li>
-                            </ul>
-                        <li><strong>🏆 성과:</strong> 실시간 종족 요약 및 캐릭터 프롬프트 자동화 시스템 완성, Unity 기반 캐릭터 연동 음성 대화 데모 구현</li>
-                        <li><strong>🔗 상세링크:</strong> 
-                            <a href="./projects/08_Fluent.html" target="_blank">프로젝트 상세 내용</a>
-                        </li>
-                    </ul>
-                </details>
-            </li>
-        </ul>
+            </ul>
+
+            <a href="./projects/08_Fluent.html" target="_blank">🔗 전체 상세 페이지 보기</a>
+        </div>
+        </details>
     </section>
-
-
-
-    <section>
-        <h2>📜 Certifications</h2>
-        <ul class="certification-list">
-            <li class="certification-item">
-                <span class="certification-name">운전면허증 1종보통</span>
-                <span class="certification-date">2018.02 취득</span>
-            </li>
-            <li class="certification-item">
-                <span class="certification-name">IBT TOEIC Speaking IM3</span>
-                <span class="certification-date">2025.04 취득</span>
-            </li>
-        </ul>
-    </section>
-
-
-    <section>
-        <h2>📍 Contact & Location</h2>
-        <p>Email: <a href="mailto:jihu6033@gmail.com">jihu6033@gmail.com</a></p>
-        <p>Phone: +82 010-3389-8271</p>
-        <p>GitHub: <a href="https://github.com/KJH121212" target="_blank">github.com/KJH121212</a></p>
-        <p>주소: 경기도 안양시 호계3동</p>
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6342.016703386664!2d126.95340849646773!3d37.365979265397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5df6c31743d7%3A0x9bcc93e885eef9f8!2z6rK96riw64-EIOyViOyWkeyLnCDrj5nslYjqtawg7Zi46rOEM-uPmQ!5e0!3m2!1sko!2skr!4v1749394950548!5m2!1sko!2skr" 
-            width="100%" 
-            height="300" 
-            style="border:0; border-radius: 10px;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-        <p><a href="#">👆 맨 위로</a></p>
-    </section>
-
+    
     <footer>
         ⓒ 2025 김지후. All rights reserved.
     </footer>
