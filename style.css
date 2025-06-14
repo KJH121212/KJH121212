@@ -1,174 +1,418 @@
-/* 전체 배경 및 기본 폰트 */
+/* 🎨 톤다운 기반 테크 포트폴리오 스타일 */
+
+/* 📄 전체 배경 및 텍스트 기본 설정 */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f7f9fc;
-    margin: 0;
-    padding: 0;
-    color: #333;
+    background-color: #f4f6f8;
+    color: #2b2b2b;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.7;
 }
 
-/* 헤더 */
-header {
-    background-color: #005f73;
-    color: white;
-    text-align: center;
-    padding: 40px 20px 20px;
-}
-header img {
-    width: 130px;
-    border-radius: 100px;
-    border: 3px solid white;
-    margin-bottom: 10px;
+h1, h2, h3 {
+    color: #1e3a8a;
 }
 
-/* 섹션 공통 */
-section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-h2 {
-    color: #0a9396;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-}
-
-/* 리스트 */
-ul {
-    list-style: none;
-    padding: 0;
-}
-li {
-    margin-bottom: 10px;
-}
-
-/* 테이블 */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-table, th, td {
-    border: 1px solid #ccc;
-}
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-/* 링크 */
+/* 🔗 링크 스타일 */
 a {
-    color: #0a9396;
+    color: #0d47a1;
     text-decoration: none;
 }
 a:hover {
     text-decoration: underline;
 }
 
-/* 프로젝트 summary 버튼 스타일 */
-details summary {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
-    color: #0a9396;
-    cursor: pointer;
-    margin-bottom: 5px;
-}
-details summary::before {
-    content: '▶';
-    margin-right: 8px;
-    transition: transform 0.2s ease;
-}
-details[open] summary::before {
-    transform: rotate(90deg);
-}
-summary .project-period {
+/* 📦 공통 섹션 스타일 */
+.section {
+    margin-left: 160px; /* 사이드바 공간 확보 */
+    width: calc(100% - 160px); /* 전체에서 사이드바만큼 빼기 */
+    max-width: 1000px;  /* 중앙 정렬 대상 콘텐츠 너비 제한 */
+    margin-right: auto;
     margin-left: auto;
-    font-size: 0.9em;
-    color: #666;
+    padding: 80px 20px;
+    background: #ffffff;
 }
 
-/* 프로젝트 상세 내용 */
-details {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    padding: 18px 24px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.2s ease;
+
+.section.with-border {
+    border-top: 2px solid #bbb;
+    padding-top: 24px;
+    margin-top: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    border-radius: 12px;
 }
-details:hover {
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
-}
-.project-detail ul {
+
+.section ul {
     padding-left: 20px;
-    margin-top: 5px;
+    list-style-type: disc;
+}
+
+.section ul li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.section img {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    margin-top: 12px;
+}
+
+/* 🖼️ 홈 섹션 전체 화면 정렬 */
+.full-screen {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef1f4;
+    text-align: center;
+}
+
+/* 👤 About 레이아웃 수정 - 생년 위치를 오른쪽에 */
+.about-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.about-text p.name-line {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: bold;
+}
+
+
+.about-layout img {
+    width: 200px;
+    border-radius: 100px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 🔖 키워드 태그 */
+.keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 20px;
+}
+
+.tag {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+.tag:hover {
+    background-color: #bfdbfe;
+}
+
+/* 🧾 자격증 & 연락처 박스 */
+.cert-box{
+    background-color: #f0f4f8;
+    border: 1px solid #cbd5e1;
+    padding: 14px 20px;
+    border-radius: 8px;
     margin-bottom: 20px;
 }
-.project-detail ul li {
-    margin-bottom: 10px;
-}
-.project-detail img {
-    margin-top: 6px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+
+.cert-box p {
+    margin: 0 0 6px;
+    font-weight: bold;
+    color: #1e3a8a;
 }
 
-/* footer */
-footer {
-    text-align: center;
-    color: #888;
-    font-size: 0.9em;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-top: 1px solid #ddd;
+.cert-box ul {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
 }
 
-summary.project-toggle-button {
+.cert-box ul li {
+    width: 100%;
+    text-align: left;
+}
+
+/* 🎓 학력 */
+.edu-list.simple {
     list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.edu-item {
+    background: transparent;
+}
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.edu-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.edu-period {
+    font-size: 0.95em;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.edu-item p {
+    margin: 2px 0 0 0;
+    font-size: 0.95em;
+}
+
+/* 🛠 기술 카드 */
+.skill-card {
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.skill-card h3 {
+    color: #1976d2;
+    margin-bottom: 12px;
+}
+
+.skill-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-list li {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* 왼쪽 정렬 */
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.skill-list li img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.level {
+    margin-left: auto;
     font-weight: bold;
-    color: #0a9396;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.level.high {
+    color: #00796b;
+}
+
+.level.mid {
+    color: #f57c00;
+}
+
+.level.low {
+    color: #d32f2f;
+}
+
+/* 🐞 트러블슈팅 details 요소 */
+details summary {
     cursor: pointer;
-    margin-bottom: 5px;
+    color: #1976d2;
+    font-weight: bold;
+    margin-top: 12px;
+    font-size: 1em;
 }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+details[open] summary {
+    color: #0d47a1;
 }
 
-.about-item {
-  flex: 1 1 300px;
-  margin: 12px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #ffffff;
-  text-align: center; /* 내용 가운데 정렬 */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+details div {
+    margin-left: 12px;
+    margin-top: 10px;
 }
 
-.about-item h3 {
-  margin-top: 0; /* 상단 여백 제거 */
-  background-color: #0a9396;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 1.05em;
-  text-align: center;
+details p {
+    margin-bottom: 10px;
 }
 
-
-
-/* 모바일 대응 */
-@media (max-width: 768px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
+summary.project-summary {
+    cursor: pointer;
+    color: #1976d2;
+    font-weight: bold;
+    margin-top: 12px;
+    font-size: 1em;
 }
+
+details[open] summary.project-summary {
+    color: #0d47a1;
+}
+
+/* 📊 표 관련 스타일 */
+.project-table,
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+
+.project-table th,
+.project-table td,
+table th,
+table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.project-table th {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+table thead {
+    background-color: #f1f5f9;
+    font-weight: bold;
+}
+
+table tr:nth-child(even),
+.project-table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+table tr:hover {
+    background-color: #eef2f7;
+}
+
+.project-table a {
+    color: #0d47a1;
+    font-weight: 500;
+    text-decoration: none;
+}
+.project-table a:hover {
+    text-decoration: underline;
+}
+
+/* 📌 사이드 네비게이션 바 (PC) */
+.side-nav {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 140px;
+    background-color: #ffffff;
+    padding: 20px 12px;
+    border-right: 1px solid #e5e7eb;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+/* 메뉴 리스트 */
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 메뉴 항목 */
+.side-nav li a {
+    display: block;
+    padding: 8px 12px;
+    color: #1e3a8a;
+    font-weight: 600;
+    font-size: 0.95em;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+}
+
+/* 호버 효과 */
+.side-nav li a:hover {
+    background-color: #e0ecff;
+    color: #0d47a1;
+}
+
+/* 현재 위치 강조 (선택) */
+.side-nav li a.active {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+/* 🔳 햄버거 버튼 (모바일 전용) */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+/* 📱 모바일 화면 전환 스타일 */
+@media screen and (max-width: 1320px) {
+    .side-nav {
+        display: none;
+    }
+
+    .side-nav.active {
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid #ddd;
+    }
+
+    .side-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .side-nav li a {
+        font-size: 1em;
+        padding: 12px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
