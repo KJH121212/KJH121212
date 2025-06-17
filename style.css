@@ -344,6 +344,8 @@ details p {
     .section {
         page-break-before: always;
         break-before: page;
+        padding: 20px 0 !important;
+        margin-bottom: 40px;
     }
 
     .section:first-of-type {
@@ -360,7 +362,13 @@ details p {
         background: white;
         color: black;
     }
+
+    a[href] {
+        color: #0000EE; /* 전통적인 링크 색 */
+        text-decoration: underline;
+    }
 }
+
 /* 상단 바 (작은 화면에서만 표시) */
 .top-nav {
     display: none;
