@@ -4,103 +4,139 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-    <h1>📁 팀 프로젝트: FLUENT - 실시간 종족 지식 기반 AI 음성 챗봇 개발</h1>
+  <h1>📁 팀 프로젝트: FLUENT - 실시간 종족 지식 기반 AI 음성 챗봇 개발</h1>
 
-    <div class="section">
+  <div class="section">
     <h2>📝 프로젝트 개요</h2>
-    <p>FLUENT는 사용자가 직접 정의한 캐릭터 설정을 기반으로, 자연스러운 감정 공감형 AI 음성 대화를 생성하는 캐릭터 챗봇입니다. 본 프로젝트에서는 종족, 성격, 말투, 목소리 등을 기반으로 LLM 프롬프트를 생성하고, 위키/팬덤 실시간 크롤링과 Supabase 저장소 연동을 통해 페르소나 설정의 자동화와 일관성을 구현하였습니다.</p>
-    </div>
+    <p>FLUENT는 사용자가 직접 정의한 캐릭터 설정을 기반으로, 자연스러운 감정 공감형 AI 음성 대화를 생성하는 캐릭터 챗봇입니다. 종족, 성격, 말투, 목소리 등을 바탕으로 LLM 프롬프트를 생성하며, 위키/팬덤 실시간 크롤링과 Supabase 연동을 통해 페르소나 설정의 자동화와 일관성을 구현했습니다.</p>
+    <p>본 프로젝트는 6월 5일 부트캠프 종료와 함께 일단락되었지만, 완성도에 아쉬움을 느껴 이후에도 일부 기능을 개선하며 프로젝트를 이어갔습니다. 취업 준비로 바쁜 와중에도 LangChain 도입을 시도하며 기능 확장을 고민했습니다.</p>
 
-    <div class="section">
+    <h3>📈 워크플로우</h3>
+    <details>
+      <summary>👁️ 워크플로우 보기/숨기기</summary>
+      <img src="../images/08_industry_partnership_project_fluentt/final_workflow.png" alt="프로젝트 워크플로우" style="margin-top: 10px; max-width: 100%;">
+    </details>
+  </div>
+
+  <div class="section">
     <h2>⏱️ 기간 및 인원</h2>
-    <p><span class="highlight">기간:</span> 2025.05.09 ~ 2025.06.05</p>
-    <p><span class="highlight">인원:</span> 총 2명</p>
-    </div>
+    <p><span class="highlight">기간:</span> 2025.05.09 ~ 2025.06.23</p>
+    <p><span class="highlight">인원:</span> 팀원 2명 + 기업 측과 협업</p>
+  </div>
 
-    <div class="section">
+  <div class="section">
     <h2>🛠 기술 스택</h2>
     <p><strong>프로그래밍 언어 및 도구:</strong> Python, Streamlit, Supabase, OpenAI API, ElevenLabs, LiveKit</p>
     <p><strong>모델 및 라이브러리:</strong> GPT-4o, Whisper(STT), ElevenLabs(TTS), Silero VAD, Deepgram</p>
-    </div>
+  </div>
 
     <div class="section">
-    <h2>🔧 핵심 기능</h2>
-    <ul>
-        <li>✔ 사용자가 입력한 종족이 없을 경우, 위키백과/팬덤 실시간 크롤링 → GPT 요약 → Supabase 저장</li>
-        <li>✔ 캐릭터 설정(name, mbti, type, species 등)을 기반으로 프롬프트 자동 생성 및 저장</li>
-        <li>✔ Supabase에 종족/MBTI 정보를 JSON 구조로 저장하고 이후 모든 챗봇 응답에 활용</li>
-        <li>✔ Streamlit 기반 멀티 뷰 UI (로그인 → 캐릭터 선택/생성 → 채팅)</li>
-        <li>✔ LiveKit 기반 실시간 STT/LLM/TTS 처리 구조</li>
-    </ul>
+        <h2>🔧 핵심 기능</h2>
+        <ul>
+            <li>✔ 캐릭터 설정(name, MBTI, type, species 등)을 기반으로 LLM 프롬프트 자동 생성 및 저장</li>
+            <li>✔ 사용자가 입력한 종족이 없을 경우, fandom/wiki 실시간 크롤링 → GPT 요약 → Supabase 저장</li>
+            <li>✔ Supabase에 구조화된 캐릭터 정보를 저장하고 모든 LLM 응답에 지속 반영</li>
+            <li>✔ 사용자별 대화 히스토리를 저장하여 메모리 기반 반응 구현</li>
+            <li>✔ LiveKit 기반 실시간 STT → GPT → TTS 파이프라인 구축</li>
+        </ul>
     </div>
 
-    <div class="section">
+
+  <div class="section">
     <h2>🧑‍💻 내가 기여한 부분</h2>
     <ul>
         <li>✔ <strong>프롬프트 엔지니어링 전담:</strong> 캐릭터 정보 → LLM 입력용 프롬프트 설계 자동화 및 템플릿화</li>
-        <li>✔ <strong>종족 요약 워크플로우 단독 설계 및 구현</strong>:
+        <li>
+        <strong>✔ 종족 요약 워크플로우 단독 설계 및 구현</strong>
         <ul>
             <li>사용자 입력 종족명을 위키/Fandom에서 실시간 크롤링</li>
             <li>GPT로 요약 → JSON 형식화 → Supabase 저장</li>
             <li>말투, 특징, 종결어미, 예시 대사까지 포함</li>
         </ul>
-        <p><strong>📌 종족 요약 처리 워크플로우</strong></p>
-        <img src="../images/08_industry_partnership_project_fluentt/species_workflow.png" width="650"/>
+        <details style="margin-top: 12px;">
+            <summary>📌 종족 요약 워크플로우 보기 (구버전)</summary>
+            <figure style="margin-top: 12px;">
+            <img src="../images/08_industry_partnership_project_fluentt/species_workflow.png" width="650" alt="종족 요약 워크플로우">
+            <figcaption style="text-align: center; font-size: 0.95rem; color: #999; margin-top: 6px;">※ 해당 워크플로우는 구버전 설계입니다.</figcaption>
+            </figure>
+        </details>
         </li>
-        <li>✔ <code>generate_character_prompt.py</code>, <code>species_summary_generator.py</code> 작성 및 통합</li>
         <li>✔ Supabase 구조 설계 및 캐릭터/종족 테이블 연동 처리</li>
+
+        <li>✔ <strong>세계관-종족 연결 구조 설계 및 데이터 스키마 개선 시도</strong> (연장 기간 중):
+            <ul>
+                <li>기존 종족 단독 설정 구조를 개선하여, 종족을 특정 세계관에 귀속시키는 데이터 설계 도입</li>
+                <li>세계관 문서와 종족 문서를 분리 구성하여 LLM 응답의 일관성 향상 및 설정 확장 용이</li>
+            </ul>
+        </li>
+
+        <li>✔ <strong>LangChain 기반 문서 검색 + 프롬프트 자동화 구조 시도</strong> (연장 기간 중):
+            <ul>
+                <li>세계관 및 종족 설명 문서를 임베딩하여 FAISS 기반 유사도 검색 구조 설계</li>
+                <li>검색된 문서를 기반으로 동적 프롬프트를 구성하는 자동화 흐름 구현</li>
+            </ul>
+        </li>
     </ul>
-    </div>
+  </div>
 
-    <div class="section">
+  <div class="section">
     <h2>🐛 트러블슈팅</h2>
+    <details style="margin-top: 12px;">
+        <summary style="cursor: pointer; color: #0a9396;"><strong>✔ 페르소나 응답을 객관적으로 평가할 수 있는 기준이 없던 문제</strong></summary>
+        <div style="margin-top: 10px;">
+            <p><strong>- 문제 배경:</strong> 페르소나 챗봇의 응답은 "정답"이 있는 형식이 아니며, 공감도·개성·정체성 일관성 등 주관적인 요소가 핵심임. 그럼에도 불구하고 기존 BLEU, ROUGE 등 텍스트 생성 지표를 적용하려 하자, 캐릭터의 성격이나 말투를 정량적으로 측정할 수 없는 문제가 발생함.</p>
+            <p><strong>- 시도한 해결 방식:</strong> 기존 NLP 평가 지표 대신 GPT-4 기반 LLM 평가자 활용, 페르소나에 기대되는 어휘군(말투, 어조, 태도 등)을 사전 정의하여 실제 응답과 비교, 시나리오 기반 상황 테스트, A/B 테스트, 사용자 피드백 설문 등을 결합해 다면 평가 구조를 설계함.</p>
+            <p><strong>- 최종 해결 방법:</strong> LLM 응답의 일관성과 감정 전달력을 측정할 수 있도록 정체성 기대 어휘 매칭과 LLM 기반 정성 평가 구조를 구축하고, 캐릭터별 반응 선호도를 측정하는 A/B 테스트 시나리오도 일부 설계함.</p>
+            <p><strong>- 얻은 인사이트:</strong> 페르소나형 AI는 정확성보다는 일관성과 몰입감이 더 중요하며, 정답 기반 평가 대신 정성 기반 다면 평가 구조가 필요함을 체감함. 특히 LLM 평가자를 활용한 정체성 일관성 측정은 향후 평가 자동화에 중요한 단서가 될 수 있음.</p>
+        </div>
+    </details>
 
-    <h3>📌 종족명에 따른 응답 불일치 문제</h3>
-    <p><strong>- 배경:</strong> 사용자가 '엘프', '악마', '책' 등 다양한 종족명을 입력할 때, 의미 해석이 불분명하여 GPT의 응답 일관성에 문제가 발생</p>
-    <p><strong>- 해결:</strong> 종족 입력 시 fandom/wiki 실시간 크롤링 → GPT 요약 → 종족 성격/말투를 포함한 JSON 저장 → prompt 자동 반영 구조로 개선</p>
 
-    <h3>📌 말투 정보 중복으로 인한 LLM 혼란</h3>
-    <p><strong>- 문제:</strong> 말투 정보가 사용자 입력, MBTI, 종족(species) 세 곳에 중복되어 들어가 GPT가 응답 말투를 일관되게 생성하지 못하는 문제 발생</p>
-    <p><strong>- 해결:</strong> 사용자 입력 말투를 최우선으로 반영하고, 종족 데이터에는 종결어미 중심의 말투 정보를 보완적으로 사용. MBTI는 말투가 아닌 성격 묘사 중심으로 제한하여 충돌 방지</p>
+    <details style="margin-top: 12px;">
+        <summary style="cursor: pointer; color: #0a9396;"><strong>✔ 세계관과 종족이 혼합되어 응답이 불일치하는 문제</strong></summary>
+        <div style="margin-top: 10px;">
+            <p><strong>- 문제 배경:</strong> 종족 설정이 세계관과 분리되어 있어, 판타지 세계관의 엘프가 사이버펑크 무기를 사용하는 등 설정 간 충돌이 발생함. 이는 종족의 배경 정보가 일관되게 적용되지 않고, 프롬프트가 단일 구조로 처리되었기 때문.</p>
+            <p><strong>- 시도한 해결 방식:</strong> 초기에는 사용자가 종족을 주관식으로 입력하도록 구성했으나, 입력의 자유도가 높아 설정 혼란을 유발했고, 세계관 정보도 반영되지 않아 충돌이 반복됨. 이에 따라 입력 방식을 세계관 → 종족을 선택하는 Select Box 방식으로 변경함.</p>
+            <p><strong>- 최종 해결 방법:</strong> 세계관 문서를 별도로 정의하고, 각 종족이 특정 세계관에 귀속되도록 데이터 구조를 개선함. 프론트엔드에서도 Select Box 입력 방식에 맞춰 구조 변경이 필요했으나, 해당 부분은 기업 측 구현 범위였고, 연장 기간 동안은 취업 준비 병행으로 직접적인 UI 개선에는 제한이 있었음.</p>
+            <p><strong>- 얻은 인사이트:</strong> LLM 기반 응답에서 설정 일관성을 유지하려면, 세계관과 종족을 구조적으로 분리하고 연결해야 하며, 사용자 입력 방식(UI/UX)도 구조적 설계와 맞물려야 효과적으로 작동함을 체감함.</p>
+        </div>
+    </details>
 
-    <h3>📌 페르소나 응답 평가 기준 부재</h3>
-    <p><strong>- 배경:</strong> 전통 NLP 지표(BLEU 등)로 캐릭터 응답 품질을 측정하기 어려움</p>
-    <p><strong>- 해결:</strong> GPT-4 기반 자동 평가, 시나리오 기반 A/B 테스트, 핵심 어휘 매칭 평가 기준 도입</p>
-    </div>
+    <details style="margin-top: 12px;">
+        <summary style="cursor: pointer; color: #0a9396;"><strong>✔ 문서 검색 기반 응답 자동화를 LangChain으로 시도했지만 적용 실패</strong></summary>
+        <div style="margin-top: 10px;">
+            <p><strong>- 문제 배경:</strong> 세계관과 종족 정보를 분리해 저장하더라도, 프롬프트가 길어지고 캐릭터가 많아질수록 응답이 일관되지 않거나 정보가 누락되는 현상이 발생함.</p>
+            <p><strong>- 시도한 해결 방식:</strong> LangChain과 FAISS를 활용하여 종족/세계관 문서를 임베딩하고, 사용자 입력에 따라 관련 문서를 검색하여 프롬프트를 자동 구성하는 구조를 설계함.</p>
+            <p><strong>- 최종 해결 방법:</strong> 기술적으로는 구현 가능했지만, 기존에 각 기능별로 나눠 잘 정리된 파이썬 파일 구조와 충돌되었고, 이를 무리하게 통합할 경우 전체 구조를 해치게 됨. 또한, LangChain 도입의 필요성을 팀원들에게 설득하는 데 실패하며 실사용에는 적용하지 않음.</p>
+            <p><strong>- 얻은 인사이트:</strong> 새로운 프레임워크나 기술을 도입할 때는 기술적 우수성뿐 아니라, 기존 코드 구조와의 통합 가능성, 팀 내 합의, 유지보수까지 고려한 설계적 설득력이 필요함을 배움.</p>
+        </div>
+    </details>
+  </div>
 
-    <h3>📌 응답 일관성과 윤리성 유지를 위한 프롬프트 관리</h3>
-    <p><strong>- 문제:</strong> 사용자 설정에 따라 LLM이 부적절한 말투, 응답 톤, 표현을 사용할 가능성이 있음</p>
-    <p><strong>- 해결:</strong> 캐릭터의 응답 스타일과 시스템 제약을 분리 관리하기 위해 <code>prompt_config</code> 테이블을 별도 생성하여, 시스템 프롬프트에 적용할 정책(Prompt Rule)과 제약사항을 구성하고 동적으로 주입함</p>
-
-    <div class="section">
+  <div class="section">
     <h2>🌟 팀 성과</h2>
     <ul>
-        <li>✔ 사용자 입력만으로 실시간 캐릭터 설정 자동 생성 (Prompt + Knowledge Base + DB)</li>
-        <li>✔ 캐릭터 기반 LLM 응답 구조 완성 및 실시간 대화 데모 구현</li>
-        <li>✔ 종족 요약 및 말투 생성 시스템을 통해 몰입도 있는 페르소나 생성에 성공</li>
-        <li>✔ <strong>Unity 기반 캐릭터와 실제 음성 인터랙션 구현 성공</strong>:
-        <ul>
-            <li>기업 제공 Unity 환경과 연동하여, 사용자의 음성을 실시간 STT로 인식하고 GPT 응답을 TTS로 변환하여 캐릭터가 말하는 듯한 몰입형 경험 구현</li>
-            <li>버츄얼 캐릭터와 음성 출력이 자연스럽게 연결됨</li>
-        </ul>
-        </li>
+      <li>✔ 사용자 입력만으로 실시간 캐릭터 설정 자동 생성 (Prompt + Knowledge Base + DB)</li>
+      <li>✔ 캐릭터 기반 LLM 응답 구조 완성 및 실시간 대화 데모 구현</li>
+      <li>✔ 종족 요약 및 말투 생성 시스템을 통해 몰입도 있는 페르소나 생성에 성공</li>
+      <li>✔ Unity 기반 캐릭터와 실제 음성 인터랙션 구현 성공</li>
     </ul>
     <p><strong>📸 Unity 연동 데모 화면:</strong></p>
     <img src="../images/08_industry_partnership_project_fluentt/Final_result.png" width="700"/>
-    </div>
+  </div>
 
-
-    <div class="section">
+  <div class="section">
     <h2>💡 깨달은 점</h2>
     <p>사용자 설정만으로 페르소나를 만들기 위해서는 외부 지식 기반을 실시간으로 받아들이고, 이를 잘 요약하고 구조화하여 LLM에 반영할 수 있어야 한다는 점을 배웠습니다. 단순히 기술을 사용하는 것에서 벗어나, 사용자 경험과 LLM의 일관된 캐릭터화를 위한 프롬프트 설계와 평가 기준 정립이 중요하다는 점을 체감했습니다.</p>
-    </div>
+  </div>
 
-    <div class="section">
+  <div class="section">
     <h2>🔗 참고 링크</h2>
     <ul>
-        <li>📁 GitHub 저장소: <span style="color: #999;">비공개 저장소입니다</span></li>
+      <li>📁 GitHub 저장소: <span style="color: #999;">비공개 저장소입니다</span></li>
     </ul>
-    </div>
+  </div>
 </body>
 </html>
