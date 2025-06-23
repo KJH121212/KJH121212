@@ -1,111 +1,130 @@
-/* ✅ 기본 레이아웃 */
+/* 기본 설정 */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f9fbfc;
-  color: #333;
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-size: 16px;
-  line-height: 1.6;
+  font-family: 'Noto Sans KR', 'Segoe UI', sans-serif;
+  background-color: #f1f5f9;  /* 연한 남색 회색 배경 */
+  color: #1e1e1e;
+  margin: 0 auto;
+  padding: 40px 20px;
+  max-width: 960px;
+  line-height: 1.8;
 }
 
-h1, h2, h3 {
-  color: #005f73;
-  margin-top: 1.5em;
+/* 헤더 */
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #1e3a8a;
+  color: #1e3a8a;
 }
 
 h2 {
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 6px;
+  font-size: 1.5rem;
+  color: #1e3a8a;
+  border-left: 6px solid #3b5b92;
+  padding-left: 12px;
+  margin-top: 5px;
+  margin-bottom: 16px;
 }
 
-ul {
-  padding-left: 20px;
+h3 {
+  font-size: 1.2rem;
+  color: #1e293b;
+  margin-top: 24px;
+  margin-bottom: 12px;
 }
 
-img {
-  max-width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-
+/* 섹션 카드 */
 .section {
-  margin-bottom: 40px;
+  margin: 24px 0;
+  padding: 20px 24px 12px;
+  background: #e5ecf6;  /* 연한 남색 배경 */
+  border: 1px solid #cbd5e1;
+  border-left: 5px solid #1e3a8a;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
+/* 리스트 */
+ul {
+  padding-left: 1.5em;
+  margin-bottom: 16px;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+/* 강조 텍스트 */
 .highlight {
-  background-color: #e0f2f1;
-  padding: 8px 12px;
+  font-weight: bold;
+  color: #1e3a8a;
+}
+
+/* 링크 */
+a {
+  color: #1e3a8a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 이미지 */
+img {
+  display: block;
+  margin: 16px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* details summary */
+details {
+  background-color: #dce7f6;
+  border: 1px solid #b8cbe7;
+  border-radius: 8px;
+  padding: 14px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #1e3a8a;
+  font-size: 1rem;
+}
+
+/* code 스타일 */
+code {
+  background-color: #dbeafe;
+  color: #1e40af;
+  padding: 2px 6px;
+  font-family: 'Courier New', monospace;
   border-radius: 4px;
-  display: inline-block;
+  font-size: 0.95em;
 }
 
-.project-period {
-  font-size: 0.9em;
-  color: #888;
-  margin-left: 10px;
+/* figcaption */
+figcaption {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 6px;
+  color: #475569;
 }
 
-/* ✅ 테이블 개선 */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
-
-/* ✅ 미디어 쿼리: 모바일 대응 */
+/* 반응형 */
 @media screen and (max-width: 768px) {
   body {
-    max-width: 100%;
-    margin: 10px;
-    padding: 0 10px;
-    font-size: 15px;
+    padding: 20px 12px;
   }
-
   h1 {
-    font-size: 1.5em;
+    font-size: 1.8rem;
   }
-
   h2 {
-    font-size: 1.3em;
-  }
-
-  h3 {
-    font-size: 1.1em;
-  }
-
-  ul {
-    padding-left: 16px;
-  }
-
-  .project-period {
-    font-size: 0.8em;
-    display: block;
-    margin-left: 0;
-    margin-top: 4px;
-  }
-
-  table {
-    display: block;
-    overflow-x: auto;
-    width: 100%;
-  }
-
-  th, td {
-    font-size: 0.9em;
-    white-space: nowrap;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
+    font-size: 1.3rem;
   }
 }
